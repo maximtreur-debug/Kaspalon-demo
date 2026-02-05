@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brillette</title>
   <style>
     /* Body styling */
@@ -27,6 +28,16 @@
       border: 1px solid #333;
       margin: 20px 0;
     }
+.foto {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.foto img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
 
     /* Afbeelding styling */
     .foto img {
@@ -84,6 +95,12 @@
         width: 100%;
         height: auto;
       }
+	  @media (max-width: 600px) {
+  .foto img {
+    max-width: 100%;
+  }
+}
+
     }
   </style>
 </head>
