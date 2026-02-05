@@ -35,12 +35,26 @@
       height: auto;
       display: block;
       margin: 20px auto;
-      cursor: pointer; /* laat zien dat je erop kunt klikken */
-      transition: transform 0.2s; /* voor hover-effect */
+      cursor: pointer;
+      transition: transform 0.2s;
     }
 
     .foto img:hover {
-      transform: scale(1.05); /* klein effect bij hover */
+      transform: scale(1.05);
+    }
+
+    /* Draai-animatie bij klik */
+    .draai {
+      animation: spin 0.8s ease;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     /* Contact info */
@@ -80,10 +94,10 @@
     <h1>Brillette</h1>
     <hr />
     <h3>Brillette is mijn poes. Ze is 3 jaar en een lapjeskat. Ze is heel lui en doet niks anders dan op mijn bed liggen, buiten rondlopen en eten.</h3>
-	<h3><a href="./hobbies">Hobbies van Brillette</a></h3>
+    <h3><a href="./hobbies">Hobbies van Brillette</a></h3>
   </div>
 
-  <!-- Foto sectie met kattengeluid -->
+  <!-- Foto sectie -->
   <div class="foto">
     <img src="./FotoBrillette.jpeg" id="foto" alt="Brillette de poes">
   </div>
@@ -98,14 +112,20 @@
     <h3>Nummer: <a href="tel:+31616152736">+31 6 16152736</a></h3>
   </div>
 
-  <!-- JavaScript voor klik geluid -->
+  <!-- JavaScript -->
   <script>
     const foto = document.getElementById('foto');
     const meow = document.getElementById('meowSound');
 
     foto.addEventListener('click', () => {
-      meow.currentTime = 0; // begin opnieuw
+      // geluid opnieuw afspelen
+      meow.currentTime = 0;
       meow.play();
+
+      // draai-animatie opnieuw starten
+      foto.classList.remove('draai');
+      void foto.offsetWidth; // reset animatie
+      foto.classList.add('draai');
     });
   </script>
 
