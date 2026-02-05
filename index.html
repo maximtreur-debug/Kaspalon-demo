@@ -1,48 +1,84 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Browser</title>
-   <style>
+  <title>Brillette</title>
+  <style>
+    /* Body styling */
     body {
       background-color: lightblue;
-	  display: flex;
-	  align-items: center;
-	  flex-direction: column;
-	  }
-	img {
-		border-radius: 50px;
-		margin:  auto;
-		}
-	#foto {
-		width: 100vw;
-	}
-</style>
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1, h3 {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    hr {
+      width: 80%;
+      border: 1px solid #333;
+      margin: 20px 0;
+    }
+
+    /* Afbeelding styling */
+    .foto img {
+      border-radius: 20px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+
+    /* Contact info */
+    .contact {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    /* Responsive text voor kleinere schermen */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      h3 {
+        font-size: 1em;
+      }
+      .foto img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
 </head>
-
 <body>
- <div>
- <h1>Brillette</h1>
-  <hr />
-  <h3>Brillette is een mijn poes. Ze is 3 jaar en is een lapjes kat. Ze is heel lui en doet niks anders dan op mijn bed liggen, buiten rondlopen en eten.</3>
-    </div>
-	
-	
-	<div class="foto">
-	<img src="./FotoBrillette.jpeg"
- width="500px">
-</div>
+
+  <div class="intro">
+    <h1>Brillette</h1>
+    <hr />
+    <h3>Brillette is mijn poes. Ze is 3 jaar en een lapjeskat. Ze is heel lui en doet niks anders dan op mijn bed liggen, buiten rondlopen en eten.</h3>
+  </div>
+
+  <div class="foto">
+    <img src="https://images.pubble.cloud/worker/jpg/quick/1920/58492/d9f3425a/content/2023/11/c0305a35-a54d-41e8-9785-3c81117c3069" alt="Brillette de poes">
+  </div>
+
+  <div class="contact">
+    <h3>Maak nu jouw afspraak met Brillette. Contacteer via:</h3>
+    <h3>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></h3>
+    <h3>Nummer: <a href="tel:+31616152736">+31 6 16152736</a></h3>
+  </div>
+
 </body>
-
 </html>
-<h3>Maak nu jouw afspraak met Brillette contacteer via:</h3>
-<h3>E-mail: maxim.treur@icloud.com</h3>
 
- <h3>Nummer: + 31 6 16152736</3h>
 
 
 
