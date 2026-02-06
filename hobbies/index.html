@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brillette</title>
+
   <style>
-    /* Body styling */
     body {
       background-color: lightblue;
       display: flex;
@@ -23,18 +23,17 @@
     }
 
     hr {
-      width: 80%;
+      width: 60%;
       border: 1px solid #333;
-      margin: 20px 0;
+      margin: 20px auto;
     }
 
-    /* Afbeelding styling */
+    /* Afbeelding responsive */
     .foto img {
-      border-radius: 20px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 300px;   /* laptop */
       height: auto;
-      display: block;
-      margin: 20px auto;
+      border-radius: 20px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -43,90 +42,73 @@
       transform: scale(1.05);
     }
 
-    /* Draai-animatie bij klik */
+    /* Draai-animatie */
     .draai {
-      animation: spin 0.8s ease;
+      animation: spin 0.8s linear;
     }
 
     @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
-    /* Contact info */
     .contact {
       margin-top: 30px;
       text-align: center;
     }
 
     .contact a {
-      color: #000;
+      color: black;
       text-decoration: none;
     }
 
     .contact a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive text voor kleinere schermen */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8em;
-      }
-      h3 {
-        font-size: 1em;
-      }
-      .foto img {
-        width: 100%;
-        height: auto;
-      }
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- Intro sectie -->
-  <div class="intro">
-    <h1>hobbies</h1>
-    <hr style="width:60%; margin: 20px auto;">
-    <h3>Brillette haar hobbies zijn</h3>
-	  <ol start=1. >Mini-yoga Muizenjacht-expert kattenkaraoke boekenwurm schaduwjager</ol>
-		<a href="../">⬅️</a>
-  </div>
+  <h1>Hobbies</h1>
+  <hr>
+  <h3>Brillette haar hobby’s</h3>
 
-  <!-- Foto sectie met kattengeluid -->
+  <ol>
+    <li>Mini-yoga</li>
+    <li>Muizenjacht-expert</li>
+    <li>Kattenkaraoke</li>
+    <li>Boekenwurm</li>
+    <li>Schaduwjager</li>
+  </ol>
+
+  <h3><a href="../">⬅️ Terug</a></h3>
+
   <div class="foto">
     <img src="../FotoBrillette.jpeg" id="foto" alt="Brillette de poes">
   </div>
 
-  <!-- Audio element -->
   <audio id="meowSound" src="../meow.mp3"></audio>
 
-  <!-- Contact sectie -->
   <div class="contact">
-    <h3>Maak nu jouw afspraak met Brillette. Contacteer via:</h3>
+    <h3>Contact</h3>
     <h3>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></h3>
     <h3>Nummer: <a href="tel:+31616152736">+31 6 16152736</a></h3>
   </div>
 
-  <!-- JavaScript voor klik geluid -->
   <script>
-    const foto = document.getElementById('foto');
-    const meow = document.getElementById('meowSound');
+    const foto = document.getElementById("foto");
+    const geluid = document.getElementById("meowSound");
 
-    foto.addEventListener('click', () => {
+    foto.addEventListener("click", () => {
       // geluid opnieuw afspelen
-      meow.currentTime = 0;
-      meow.play();
+      geluid.currentTime = 0;
+      geluid.play();
 
-      // draai-animatie opnieuw starten
-      foto.classList.remove('draai');
-      void foto.offsetWidth; // reset animatie
-      foto.classList.add('draai');
+      // animatie resetten en opnieuw starten
+      foto.classList.remove("draai");
+      void foto.offsetWidth;
+      foto.classList.add("draai");
     });
   </script>
 
