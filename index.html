@@ -105,10 +105,23 @@
   </div>
 
   <script>
-    const foto = document.getElementById('foto');
-    const meow = document.getElementById('meowSound');
+  const fotos = document.querySelectorAll('.klik-foto');
+  const meow = document.getElementById('meowSound');
 
+  fotos.forEach(foto => {
     foto.addEventListener('click', () => {
+      // geluid opnieuw starten
+      meow.currentTime = 0;
+      meow.play();
+
+      // draai-animatie opnieuw starten
+      foto.classList.remove('draai');
+      void foto.offsetWidth;
+      foto.classList.add('draai');
+    });
+  });
+</script>
+   <script> foto.addEventListener('click', () => {
       meow.currentTime = 0;
       meow.play();
 
