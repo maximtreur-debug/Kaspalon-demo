@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brillette</title>
-<link rel="icon" type="image/png" href="Katicon.png">
-<link rel="icon" href="Katicon.png">
-<link rel="apple-touch-icon" href="Katicon.png">
+
+  <!-- FAVICON -->
+  <link rel="icon" href="Katicon.png">
+  <link rel="apple-touch-icon" href="Katicon.png">
 
   <style>
     body {
@@ -46,7 +47,7 @@
       width: 250px;
       max-width: 90%;
       height: auto;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: transform 0.2s;
     }
@@ -62,7 +63,14 @@
 
     @keyframes spin {
       from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* MOBIEL */
+    @media (max-width: 600px) {
+      .fotos img {
+        width: 90%;
+      }
     }
 
     /* CONTACT */
@@ -84,54 +92,46 @@
 
 <body>
 
+  <!-- INTRO -->
   <div class="intro">
     <h1>Brillette en haar vrienden</h1>
     <hr>
-    <h3>
-      Brillette is mijn poes. Ze is 3 jaar en een lapjeskat.
-    </h3>
-    <h3><a href="./hobbies">➡️Hobbies van Brillette⬅️</a></h3>
+    <h3>Brillette is mijn poes. Ze is 3 jaar en een lapjeskat.</h3>
+    <h3><a href="./hobbies">➡️ Hobbies van Brillette ⬅️</a></h3>
   </div>
 
-  <!-- FOTO'S NAAST ELKAAR -->
+  <!-- FOTO'S -->
   <div class="fotos">
-  <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Brillette de poes">
-  <img src="./KatvriendBrillette.jpg" class="klik-foto" alt="Guus de kat">
-</div>
+    <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Brillette de poes">
+    <img src="./KatvriendBrillette.jpg" class="klik-foto" alt="Guus de kat">
+  </div>
 
-
+  <!-- GELUID -->
   <audio id="meowSound" src="./meow.mp3"></audio>
 
+  <!-- CONTACT -->
   <div class="contact">
     <h3>Contact:</h3>
     <h3>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></h3>
-	<h3>Telefoonnummer: <a href="+31 6 16152736">616152736</a></h3>
+    <h3>Telefoon: <a href="tel:+31616152736">+31 6 16152736</a></h3>
   </div>
 
+  <!-- JAVASCRIPT -->
   <script>
-  const fotos = document.querySelectorAll('.klik-foto');
-  const meow = document.getElementById('meowSound');
+    const fotos = document.querySelectorAll('.klik-foto');
+    const meow = document.getElementById('meowSound');
 
-  fotos.forEach(foto => {
-    foto.addEventListener('click', () => {
-      // geluid opnieuw starten
-      meow.currentTime = 0;
-      meow.play();
+    fotos.forEach(foto => {
+      foto.addEventListener('click', () => {
+        // geluid
+        meow.currentTime = 0;
+        meow.play();
 
-      // draai-animatie opnieuw starten
-      foto.classList.remove('draai');
-      void foto.offsetWidth;
-      foto.classList.add('draai');
-    });
-  });
-</script>
-   <script> foto.addEventListener('click', () => {
-      meow.currentTime = 0;
-      meow.play();
-
-      foto.classList.remove('draai');
-      void foto.offsetWidth;
-      foto.classList.add('draai');
+        // animatie resetten en starten
+        foto.classList.remove('draai');
+        void foto.offsetWidth;
+        foto.classList.add('draai');
+      });
     });
   </script>
 
