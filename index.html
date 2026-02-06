@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brillette</title>
+
   <style>
-    /* Body styling */
     body {
       background-color: lightblue;
       display: flex;
@@ -24,59 +23,46 @@
     }
 
     hr {
-      width: 80%;
+      width: 60%;
       border: 1px solid #333;
-      margin: 20px 0;
+      margin: 20px auto;
     }
-.foto {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.foto img {
-  width: 20%;
-  max-width: 400px;
-  height: auto;
-}
 
-    /* Afbeelding styling */
-    .foto img {
+    /* FOTO CONTAINER */
+    .fotos {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* FOTO'S */
+    .fotos img {
+      width: 250px;
+      max-width: 90%;
+      height: auto;
       border-radius: 10px;
-      max-width: 100%;
-      height: 20%;
-      display: block;
-      margin: 20px auto;
       cursor: pointer;
       transition: transform 0.2s;
-    .foto1 img
-      border-radius: 10px;
-      max-width: 100%;
-      height: 20%;
-      display: block;
-      margin: 20px auto;
-      cursor: pointer;
-      transition: transform 0.2s;
-	  {
+    }
 
-    .foto img:hover {
+    .fotos img:hover {
       transform: scale(1.05);
     }
 
-    /* Draai-animatie bij klik */
+    /* DRAAI ANIMATIE */
     .draai {
       animation: spin 0.8s ease;
     }
 
     @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    /* Contact info */
+    /* CONTACT */
     .contact {
       margin-top: 30px;
       text-align: center;
@@ -90,67 +76,43 @@
     .contact a:hover {
       text-decoration: underline;
     }
-
-    /* Responsive text voor kleinere schermen */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8em;
-      }
-      h3 {
-        font-size: 1em;
-      }
-      .foto img {
-        width: 100%;
-        height: auto;
-      }
-	  @media (max-width: 600px) {
-  .foto img {
-    max-width: 100%;
-  }
-}
-
-    }
   </style>
 </head>
+
 <body>
 
-  <!-- Intro sectie -->
   <div class="intro">
     <h1>Brillette en haar vrienden</h1>
-    <hr style="width:60%; margin: 20px auto;">
-    <h3>Brillette is mijn poes. Ze is 3 jaar en een lapjeskat. Ze is heel lui en doet niks anders dan op mijn bed liggen, buiten rondlopen en eten.</h3>
-    <h3><a href="./hobbies">Hobbies van Brillette</a></h3>
+    <hr>
+    <h3>
+      Brillette is mijn poes. Ze is 3 jaar en een lapjeskat.
+    </h3>
+    <h3><a href="./hobbies">⬅️ Hobbies van Brillette</a></h3>
   </div>
 
-  <!-- Foto sectie -->
-  <div class="foto">
+  <!-- FOTO'S NAAST ELKAAR -->
+  <div class="fotos">
     <img src="./FotoBrillette.jpeg" id="foto" alt="Brillette de poes">
+    <img src="./KatvriendBrillette.jpg" alt="Guus de kat">
   </div>
-<div class="foto">
-<img src="./KatvriendBrillette.jpg" id="foto1" alt="Guus de kat">
-  <!-- Audio element -->
+
   <audio id="meowSound" src="./meow.mp3"></audio>
 
-  <!-- Contact sectie -->
   <div class="contact">
-    <h3>Maak nu jouw afspraak met Brillette. Contacteer via:</h3>
+    <h3>Contact:</h3>
     <h3>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></h3>
-    <h3>Nummer: <a href="tel:+31616152736">+31 6 16152736</a></h3>
   </div>
 
-  <!-- JavaScript -->
   <script>
     const foto = document.getElementById('foto');
     const meow = document.getElementById('meowSound');
 
     foto.addEventListener('click', () => {
-      // geluid opnieuw afspelen
       meow.currentTime = 0;
       meow.play();
 
-      // draai-animatie opnieuw starten
       foto.classList.remove('draai');
-      void foto.offsetWidth; // reset animatie
+      void foto.offsetWidth;
       foto.classList.add('draai');
     });
   </script>
