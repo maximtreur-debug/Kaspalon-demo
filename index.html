@@ -7,87 +7,86 @@
 
   <style>
     body {
-      background-color: white;
       margin: 0;
-      padding: 0;
       font-family: Aptos, sans-serif;
+      background: white;
     }
 
-    /* container voor brede layout */
     .container {
-      padding: 20px;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: auto;
+      padding: 20px;
     }
 
-    /* LOGO */
+    /* HEADER: LOGO LINKS + TITEL */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 20px;
+    }
+
     .logo {
       font-family: "Times New Roman", serif;
-      font-size: 48px;
+      font-size: 32px;
       font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 20px;
-    }
-
-    /* AFBEELDING BOVEN */
-    .hero img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      object-fit: cover;
-      max-height: 500px;
+      letter-spacing: 2px;
     }
 
     h1 {
       font-family: "Times New Roman", serif;
-      margin-top: 20px;
-      font-size: 36px;
+      font-size: 40px;
+      margin: 0;
     }
 
     hr {
-      width: 100%;
       border: 1px solid #ddd;
       margin: 20px 0;
     }
 
+    /* GROTE AFBEELDING */
+    .hero img {
+      width: 100%;
+      height: auto;
+      max-height: 550px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    /* TEKST */
     .intro {
+      margin-top: 20px;
       font-size: 18px;
       line-height: 1.7;
       color: #333;
     }
 
+    /* 2 PLAATJES ONDERAAN IN HET MIDDEN */
     .fotos {
       display: flex;
+      justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
       margin-top: 30px;
+      flex-wrap: wrap;
     }
 
     .fotos img {
-      width: 100%;
-      max-width: 350px;
+      width: 320px;
+      max-width: 90%;
       border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: 0.2s;
     }
 
     .fotos img:hover {
       transform: scale(1.05);
     }
 
+    /* CONTACT */
     .contact {
       margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid #ddd;
-    }
-
-    .contact a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -96,37 +95,32 @@
 
   <div class="container">
 
-    <!-- LOGO -->
-    <div class="logo">UW LOGO</div>
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo">UW LOGO</div>
+      <h1>Kapper Breda</h1>
+    </div>
 
-    <!-- AFBEELDING BOVEN TEKST -->
+    <hr>
+
+    <!-- GROTE FOTO -->
     <div class="hero">
       <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Kapper sfeer">
     </div>
 
-    <h1>Kapper Breda</h1>
-
-    <hr>
-
-    <!-- INSPIRERENDE TEKST -->
+    <!-- TEKST -->
     <div class="intro">
       <p>
-        Stap binnen in een plek waar stijl, rust en vakmanschap samenkomen.  
-        Hier draait het niet alleen om knippen, maar om een look die jouw persoonlijkheid laat spreken.
+        Een frisse look is meer dan een kapsel — het is een gevoel van zelfvertrouwen dat je meteen meeneemt naar buiten.
       </p>
 
       <p>
-        Of je nu gaat voor strak en modern, of juist een natuurlijke en tijdloze uitstraling —  
-        wij zorgen dat jij de deur uitloopt met zelfvertrouwen en energie.
-      </p>
-
-      <p>
-        Een goed kapsel verandert niet alleen je uiterlijk, maar ook hoe je je voelt.
-        En dat is precies waar wij voor gaan.
+        Wij creëren stijlen die passen bij jouw persoonlijkheid, jouw leven en jouw uitstraling.
+        Van strak en modern tot natuurlijk en tijdloos.
       </p>
     </div>
 
-    <!-- EXTRA FOTO'S -->
+    <!-- DUBBELE FOTO'S -->
     <div class="fotos">
       <img src="./FotoBrillette.jpeg" class="klik-foto" alt="stijl 1">
       <img src="./FotoBrillette.jpeg" class="klik-foto" alt="stijl 2">
@@ -135,9 +129,7 @@
     <!-- CONTACT -->
     <div class="contact">
       <h3>Plan jouw afspraak</h3>
-      <p>
-        Mail: <a href="mailto:MM317749@mencialeerling.nl">MM317749@mencialeerling.nl</a>
-      </p>
+      <p>E-mail: <a href="mailto:MM317749@mencialeerling.nl">MM317749@mencialeerling.nl</a></p>
     </div>
 
     <audio id="meowSound" src="./meow.mp3"></audio>
