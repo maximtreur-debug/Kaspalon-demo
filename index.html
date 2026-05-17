@@ -9,53 +9,63 @@
     body {
       background-color: white;
       margin: 0;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      padding: 0;
       font-family: Aptos, sans-serif;
-      box-sizing: border-box;
     }
 
-    /* LOGO TEKST */
+    /* container voor brede layout */
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* LOGO */
     .logo {
       font-family: "Times New Roman", serif;
       font-size: 48px;
       font-weight: bold;
       letter-spacing: 3px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* AFBEELDING BOVEN */
+    .hero img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      object-fit: cover;
+      max-height: 500px;
     }
 
     h1 {
       font-family: "Times New Roman", serif;
-      text-align: left;
-      margin: 10px 0;
+      margin-top: 20px;
+      font-size: 36px;
     }
 
     hr {
-      width: 60%;
-      border: 1px solid #333;
+      width: 100%;
+      border: 1px solid #ddd;
       margin: 20px 0;
     }
 
     .intro {
-      max-width: 800px;
-      text-align: left;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #333;
     }
 
     .fotos {
       display: flex;
       gap: 20px;
-      justify-content: flex-start;
       flex-wrap: wrap;
-      width: 100%;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .fotos img {
-      width: 250px;
-      max-width: 90%;
-      height: auto;
+      width: 100%;
+      max-width: 350px;
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.2s;
@@ -66,8 +76,9 @@
     }
 
     .contact {
-      margin-top: 30px;
-      text-align: left;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
     }
 
     .contact a {
@@ -78,50 +89,59 @@
     .contact a:hover {
       text-decoration: underline;
     }
-
-    @media (max-width: 600px) {
-      .fotos img {
-        width: 90%;
-      }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- LOGO -->
-  <div class="logo">
-    UW LOGO
-  </div>
+  <div class="container">
 
-  <div class="intro">
+    <!-- LOGO -->
+    <div class="logo">UW LOGO</div>
+
+    <!-- AFBEELDING BOVEN TEKST -->
+    <div class="hero">
+      <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Kapper sfeer">
+    </div>
+
     <h1>Kapper Breda</h1>
 
     <hr>
 
-    <p>
-      Bij ons draait het niet alleen om haar knippen, maar om hoe jij je voelt wanneer je buitenstapt. 
-      Een frisse look geeft zelfvertrouwen, uitstraling en nieuwe energie.
-    </p>
+    <!-- INSPIRERENDE TEKST -->
+    <div class="intro">
+      <p>
+        Stap binnen in een plek waar stijl, rust en vakmanschap samenkomen.  
+        Hier draait het niet alleen om knippen, maar om een look die jouw persoonlijkheid laat spreken.
+      </p>
 
-    <p>
-      Of je nu kiest voor strak, modern of klassiek — wij zorgen ervoor dat jouw stijl perfect bij jou past. 
-      Iedere klant verdient aandacht, kwaliteit en een moment voor zichzelf.
-    </p>
-  </div>
+      <p>
+        Of je nu gaat voor strak en modern, of juist een natuurlijke en tijdloze uitstraling —  
+        wij zorgen dat jij de deur uitloopt met zelfvertrouwen en energie.
+      </p>
 
-  <div class="fotos">
-    <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Foto kapper stijl">
-  </div>
+      <p>
+        Een goed kapsel verandert niet alleen je uiterlijk, maar ook hoe je je voelt.
+        En dat is precies waar wij voor gaan.
+      </p>
+    </div>
 
-  <audio id="meowSound" src="./meow.mp3"></audio>
+    <!-- EXTRA FOTO'S -->
+    <div class="fotos">
+      <img src="./FotoBrillette.jpeg" class="klik-foto" alt="stijl 1">
+      <img src="./FotoBrillette.jpeg" class="klik-foto" alt="stijl 2">
+    </div>
 
-  <div class="contact">
-    <h3>Plan hier jouw afspraak</h3>
-    <h3>
-      E-mail:
-      <a href="mailto:MM317749@mencialeerling.nl">MM317749@mencialeerling.nl</a>
-    </h3>
+    <!-- CONTACT -->
+    <div class="contact">
+      <h3>Plan jouw afspraak</h3>
+      <p>
+        Mail: <a href="mailto:MM317749@mencialeerling.nl">MM317749@mencialeerling.nl</a>
+      </p>
+    </div>
+
+    <audio id="meowSound" src="./meow.mp3"></audio>
+
   </div>
 
   <script>
