@@ -4,24 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kapper Breda</title>
-<p style="font-family: 'Times New Roman', serif;">
-    Dit is tekst in Times New Roman
-</p>
- 
 
   <style>
     body {
       background-color: white;
+      margin: 0;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-family: Aptos, sans-serif;
-      margin: 0;
-      padding: 20px;
       box-sizing: border-box;
     }
 
-    h1, h3 {
+    h1 {
+      font-family: "Times New Roman", serif;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    h3 {
       text-align: center;
       margin: 10px 0;
     }
@@ -32,7 +34,11 @@
       margin: 20px auto;
     }
 
-    /* FOTO CONTAINER */
+    .intro {
+      max-width: 800px;
+      text-align: center;
+    }
+
     .fotos {
       display: flex;
       gap: 20px;
@@ -42,7 +48,6 @@
       margin-top: 20px;
     }
 
-    /* FOTO'S */
     .fotos img {
       width: 250px;
       max-width: 90%;
@@ -56,24 +61,6 @@
       transform: scale(1.05);
     }
 
-    /* DRAAI ANIMATIE */
-    .draai {
-      animation: spin 0.8s ease;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-
-    /* MOBIEL */
-    @media (max-width: 600px) {
-      .fotos img {
-        width: 90%;
-      }
-    }
-
-    /* CONTACT */
     .contact {
       margin-top: 30px;
       text-align: center;
@@ -87,50 +74,55 @@
     .contact a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 600px) {
+      .fotos img {
+        width: 90%;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- INTRO -->
   <div class="intro">
     <h1>Kapper Breda</h1>
-	<p style="font-family: 'Times New Roman', serif;">
-    Dit is tekst in Times New Roman
-</p>
-    <hr>Bij ons draait het niet alleen om haar knippen, maar om hoe jij je voelt wanneer je buitenstapt. Een frisse look geeft zelfvertrouwen, uitstraling en een nieuwe energie. Of je nu kiest voor strak, modern of klassiek — wij zorgen ervoor dat jouw stijl perfect bij jou past. Iedere klant verdient aandacht, kwaliteit en een moment om zichzelf op de eerste plaats te zetten.
-    <h3>  </h3>
+
+    <hr>
+
+    <p>
+      Bij ons draait het niet alleen om haar knippen, maar om hoe jij je voelt wanneer je buitenstapt. 
+      Een frisse look geeft zelfvertrouwen, uitstraling en nieuwe energie.
+    </p>
+
+    <p>
+      Of je nu kiest voor strak, modern of klassiek — wij zorgen ervoor dat jouw stijl perfect bij jou past. 
+      Iedere klant verdient aandacht, kwaliteit en een moment voor zichzelf.
+    </p>
   </div>
 
-  <!-- FOTO'S -->
   <div class="fotos">
-    <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Brillette de poes">
+    <img src="./FotoBrillette.jpeg" class="klik-foto" alt="Foto kapper stijl">
   </div>
 
-  <!-- GELUID -->
   <audio id="meowSound" src="./meow.mp3"></audio>
 
-  <!-- CONTACT -->
   <div class="contact">
-    <h3>Vereinbare hier deinen Termin mit Brillette.</h3>
-    <h3>E-mail: <a href="mailto:MM317749@mencialeerling.nl">MM317749@mencialeerling.nl</a></h3>
+    <h3>Plan hier jouw afspraak</h3>
+    <h3>
+      E-mail:
+      <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a>
+    </h3>
   </div>
 
-  <!-- JAVASCRIPT -->
   <script>
     const fotos = document.querySelectorAll('.klik-foto');
     const meow = document.getElementById('meowSound');
 
     fotos.forEach(foto => {
       foto.addEventListener('click', () => {
-        // geluid
         meow.currentTime = 0;
         meow.play();
-
-        // animatie resetten en starten
-        foto.classList.remove('draai');
-        void foto.offsetWidth;
-        foto.classList.add('draai');
       });
     });
   </script>
