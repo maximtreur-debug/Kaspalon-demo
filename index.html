@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kapper Breda</title>
+  <title>Kapsalon Mooi Haar</title>
 
   <style>
     body {
@@ -18,11 +18,10 @@
       padding: 20px;
     }
 
-    /* HEADER: LOGO LINKS + TITEL */
+    /* HEADER */
     .header {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 20px;
     }
 
@@ -30,7 +29,6 @@
       font-family: "Times New Roman", serif;
       font-size: 32px;
       font-weight: bold;
-      letter-spacing: 2px;
     }
 
     h1 {
@@ -44,10 +42,9 @@
       margin: 20px 0;
     }
 
-    /* GROTE AFBEELDING */
+    /* HERO */
     .hero img {
       width: 100%;
-      height: auto;
       max-height: 550px;
       object-fit: cover;
       border-radius: 16px;
@@ -61,7 +58,7 @@
       color: #333;
     }
 
-    /* 2 PLAATJES ONDERAAN IN HET MIDDEN */
+    /* FOTO'S */
     .fotos {
       display: flex;
       justify-content: center;
@@ -74,7 +71,6 @@
       width: 320px;
       max-width: 90%;
       border-radius: 12px;
-      cursor: pointer;
       transition: 0.2s;
     }
 
@@ -82,65 +78,65 @@
       transform: scale(1.05);
     }
 
-    /* CONTACT */
-    .contact {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
+    /* AFSPRAAK KNOP */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: 0.2s;
     }
-	.footer {
-  margin-top: 60px;
-  background: #111;
-  color: white;
-  padding: 40px 20px;
-}
 
-.footer-container {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-}
+    .btn:hover {
+      background: #333;
+    }
 
-.footer h2, .footer h3 {
-  margin-bottom: 10px;
-}
+    /* FOOTER */
+    .footer {
+      margin-top: 60px;
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+    }
 
-.footer p {
-  margin: 5px 0;
-  color: #ddd;
-}
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
 
-.footer a {
-  color: #fff;
-  text-decoration: none;
-}
+    .footer p, .footer a {
+      color: #ddd;
+      text-decoration: none;
+    }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-}
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+    }
 
-.footer-bottom button {
-  padding: 12px 20px;
-  border: none;
-  background: white;
-  color: black;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.2s;
-}
+    .footer-bottom button {
+      padding: 12px 20px;
+      border: none;
+      background: white;
+      color: black;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-.footer-bottom button:hover {
-  background: #ddd;
-}
+    .footer-bottom button:hover {
+      background: #ddd;
+    }
   </style>
 </head>
 
@@ -151,99 +147,76 @@
     <!-- HEADER -->
     <div class="header">
       <div class="logo">UW LOGO</div>
-      <h1>Kapper Breda</h1>
+      <h1>Kapsalon Mooi Haar</h1>
     </div>
 
     <hr>
 
-    <!-- GROTE FOTO -->
+    <!-- HERO -->
     <div class="hero">
-      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" class="klik-foto" alt="Kapper sfeer">
+      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" alt="Kapsalon">
     </div>
 
     <!-- TEKST -->
     <div class="intro">
       <p>
-        Een frisse look is meer dan een kapsel — het is een gevoel van zelfvertrouwen dat je meteen meeneemt naar buiten.
+        Een frisse look is meer dan een kapsel — het is zelfvertrouwen dat je meteen uitstraalt.
       </p>
 
       <p>
-        Wij creëren stijlen die passen bij jouw persoonlijkheid, jouw leven en jouw uitstraling.
-        Van strak en modern tot natuurlijk en tijdloos.
+        Wij zorgen voor een stijl die bij jou past, van modern tot klassiek en alles daartussenin.
       </p>
+
+      <!-- AFSPRAAK KNOP -->
+      <a class="btn" href="afspraak.html">
+        Maak een afspraak
+      </a>
     </div>
 
-    <!-- DUBBELE FOTO'S -->
+    <!-- FOTO'S -->
     <div class="fotos">
-      <img src="./kapster plaatje.webp" class="klik-foto" alt="stijl 1">
-      <img src="./mannelijke kapper.jpg" class="klik-foto" alt="stijl 2">
+      <img src="./kapster plaatje.webp" alt="stijl 1">
+      <img src="./mannelijke kapper.jpg" alt="stijl 2">
     </div>
-
-    <!-- CONTACT -->
-    <div class="contact">
-      <h3>Meer over Ons</h3>
-      <p>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></p>
-    </div>
-
 
   </div>
 
-  <script>
-    const fotos = document.querySelectorAll('.klik-foto');
-    const meow = document.getElementById('meowSound');
+  <!-- FOOTER -->
+  <footer class="footer">
 
-    fotos.forEach(foto => {
-      foto.addEventListener('click', () => {
-        meow.currentTime = 0;
-        meow.play();
-      });
-    });
-  </script>
-<footer class="footer">
+    <div class="footer-container">
 
-  <div class="footer-container">
-
-    <!-- LINKS: LOGO + SLOGAN -->
-    <div class="footer-left">
-      <h2>Kapsalon Mooi Haar</h2>
-      <p>Service, advies & persoonlijke aandacht</p>
-
-      <div class="social">
-        <p><strong>Volg ons</strong></p>
-        <p>Instagram / Facebook</p>
+      <div>
+        <h2>Kapsalon Mooi Haar</h2>
+        <p>Service, advies & persoonlijke aandacht</p>
       </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>Fellenoordstraat 1</p>
+        <p>4811 TG Breda</p>
+        <p>076-5201955</p>
+        <p>afspraak@kapsalonmooihaar.nl</p>
+      </div>
+
+      <div>
+        <h3>Openingstijden</h3>
+        <p>Ma — Gesloten</p>
+        <p>Di - Vr — 09:00 - 18:00</p>
+        <p>Do — 09:00 - 21:00</p>
+        <p>Za — 09:00 - 17:00</p>
+        <p>Zo — Gesloten</p>
+      </div>
+
     </div>
 
-    <!-- MIDDEN: CONTACT -->
-    <div class="footer-middle">
-      <h3>Contact</h3>
-      <p>Straat en nummer</p>
-      <p>Postcode</p>
-      <p><a href="mailto: maxim.treur@icloud.com">maxim.treur@icloud.com</a></p>
-      <p>telefoonnummer</p>
+    <div class="footer-bottom">
+      <button onclick="window.location.href='afspraak.html'">
+        Maak een afspraak
+      </button>
     </div>
 
-    <!-- RECHTS: OPENINGSTIJDEN -->
-    <div class="footer-right">
-      <h3>Openingstijden</h3>
-      <p>Maandag — Gesloten</p>
-      <p>Dinsdag — 09:00 - 18:00</p>
-      <p>Woensdag — 09:00 - 18:00</p>
-      <p>Donderdag — 09:00 - 21:00</p>
-      <p>Vrijdag — 09:00 - 18:00</p>
-      <p>Zaterdag — 09:00 - 17:00</p>
-      <p>Zondag — Gesloten</p>
-    </div>
+  </footer>
 
-  </div>
-
-  <!-- AFSPRAAK KNOP -->
-  <div class="footer-bottom">
-    <button onclick="window.location.href='maxim.treur@icloud.com'">
-      Maak een afspraak
-    </button>
-  </div>
-
-</footer>
 </body>
 </html>
