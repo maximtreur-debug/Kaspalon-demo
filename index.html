@@ -88,6 +88,59 @@
       padding-top: 20px;
       border-top: 1px solid #ddd;
     }
+	.footer {
+  margin-top: 60px;
+  background: #111;
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer h2, .footer h3 {
+  margin-bottom: 10px;
+}
+
+.footer p {
+  margin: 5px 0;
+  color: #ddd;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.footer-bottom button {
+  padding: 12px 20px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.footer-bottom button:hover {
+  background: #ddd;
+}
   </style>
 </head>
 
@@ -128,11 +181,10 @@
 
     <!-- CONTACT -->
     <div class="contact">
-      <h3>Plan jouw afspraak</h3>
+      <h3>Meer over Ons</h3>
       <p>E-mail: <a href="mailto:maxim.treur@icloud.com">maxim.treur@icloud.com</a></p>
     </div>
 
-    <audio id="meowSound" src="./meow.mp3"></audio>
 
   </div>
 
@@ -147,6 +199,51 @@
       });
     });
   </script>
+<footer class="footer">
 
+  <div class="footer-container">
+
+    <!-- LINKS: LOGO + SLOGAN -->
+    <div class="footer-left">
+      <h2>Kapsalon Mooi Haar</h2>
+      <p>Service, advies & persoonlijke aandacht</p>
+
+      <div class="social">
+        <p><strong>Volg ons</strong></p>
+        <p>Instagram / Facebook</p>
+      </div>
+    </div>
+
+    <!-- MIDDEN: CONTACT -->
+    <div class="footer-middle">
+      <h3>Contact</h3>
+      <p>Straat en nummer</p>
+      <p>Postcode</p>
+      <p><a href="mailto: maxim.treur@icloud.com">maxim.treur@icloud.com</a></p>
+      <p>telefoonnummer</p>
+    </div>
+
+    <!-- RECHTS: OPENINGSTIJDEN -->
+    <div class="footer-right">
+      <h3>Openingstijden</h3>
+      <p>Maandag — Gesloten</p>
+      <p>Dinsdag — 09:00 - 18:00</p>
+      <p>Woensdag — 09:00 - 18:00</p>
+      <p>Donderdag — 09:00 - 21:00</p>
+      <p>Vrijdag — 09:00 - 18:00</p>
+      <p>Zaterdag — 09:00 - 17:00</p>
+      <p>Zondag — Gesloten</p>
+    </div>
+
+  </div>
+
+  <!-- AFSPRAAK KNOP -->
+  <div class="footer-bottom">
+    <button onclick="window.location.href='maxim.treur@icloud.com'">
+      Maak een afspraak
+    </button>
+  </div>
+
+</footer>
 </body>
 </html>
