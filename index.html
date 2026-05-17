@@ -78,20 +78,52 @@
       transform: scale(1.05);
     }
 
-    /* AFSPRAAK KNOP */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 20px;
-      background: black;
+    /* AFSPRAAK FORMULIER */
+    .form-container {
+      max-width: 500px;
+      margin: 60px auto;
+      padding: 20px;
+      background: #111;
       color: white;
-      text-decoration: none;
+      border-radius: 12px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
       border-radius: 8px;
+      background: white;
+      color: black;
+      cursor: pointer;
       transition: 0.2s;
     }
 
-    .btn:hover {
-      background: #333;
+    button:hover {
+      background: #ddd;
+    }
+
+    #melding {
+      text-align: center;
+      margin-top: 10px;
+      color: lightgreen;
     }
 
     /* FOOTER */
@@ -114,10 +146,6 @@
     .footer p, .footer a {
       color: #ddd;
       text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
     }
 
     .footer-bottom {
@@ -154,7 +182,7 @@
 
     <!-- HERO -->
     <div class="hero">
-      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" alt="Kapsalon">
+      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" alt="kapsalon">
     </div>
 
     <!-- TEKST -->
@@ -162,15 +190,9 @@
       <p>
         Een frisse look is meer dan een kapsel — het is zelfvertrouwen dat je meteen uitstraalt.
       </p>
-
       <p>
-        Wij zorgen voor een stijl die bij jou past, van modern tot klassiek en alles daartussenin.
+        Wij creëren stijlen die passen bij jouw persoonlijkheid en jouw leven.
       </p>
-
-      <!-- AFSPRAAK KNOP -->
-      <a class="btn" href="afspraak.html">
-        Maak een afspraak
-      </a>
     </div>
 
     <!-- FOTO'S -->
@@ -178,6 +200,26 @@
       <img src="./kapster plaatje.webp" alt="stijl 1">
       <img src="./mannelijke kapper.jpg" alt="stijl 2">
     </div>
+
+  </div>
+
+  <!-- AFSPRAAK FORMULIER -->
+  <div class="form-container">
+
+    <h2>Maak een afspraak 📅</h2>
+
+    <form onsubmit="return sendForm(event)">
+
+      <input type="text" id="naam" placeholder="Naam" required>
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="date" id="datum" required>
+      <input type="time" id="tijd" required>
+
+      <button type="submit">Verstuur afspraak</button>
+
+    </form>
+
+    <p id="melding"></p>
 
   </div>
 
@@ -211,12 +253,28 @@
     </div>
 
     <div class="footer-bottom">
-      <button onclick="window.location.href='afspraak.html'">
+      <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
         Maak een afspraak
       </button>
     </div>
 
   </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function sendForm(event) {
+      event.preventDefault();
+
+      let naam = document.getElementById("naam").value;
+      let datum = document.getElementById("datum").value;
+      let tijd = document.getElementById("tijd").value;
+
+      document.getElementById("melding").innerText =
+        "Bedankt " + naam + "! Je afspraak is gepland op " + datum + " om " + tijd + ".";
+
+      return false;
+    }
+  </script>
 
 </body>
 </html>
