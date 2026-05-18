@@ -4,12 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Kapsalon Mooi Haar</title>
 
+  <!-- EMAILJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <script>
-    (function(){
+    (function () {
       emailjs.init("uqgU5EFcv74CZg8bB");
     })();
   </script>
@@ -28,6 +30,7 @@
     }
 
     /* HERO */
+
     .hero {
       position: relative;
     }
@@ -40,8 +43,9 @@
 
       text-align: center;
 
-      font-size: 90px;
+      font-size: clamp(40px, 7vw, 90px);
       font-weight: bold;
+
       color: black;
 
       font-family: "Times New Roman", serif;
@@ -56,15 +60,18 @@
       border-radius: 16px;
     }
 
-    /* TEKST */
+    /* INTRO */
+
     .intro {
       margin-top: 20px;
       font-size: 18px;
       line-height: 1.7;
       color: #333;
+      text-align: center;
     }
 
     /* FOTO'S */
+
     .fotos {
       display: flex;
       justify-content: center;
@@ -84,13 +91,16 @@
       transform: scale(1.05);
     }
 
-    /* AFSPRAAK FORMULIER */
+    /* FORMULIER */
+
     .form-container {
       max-width: 500px;
       margin: 60px auto;
       padding: 20px;
+
       background: #111;
       color: white;
+
       border-radius: 12px;
     }
 
@@ -106,20 +116,26 @@
     }
 
     input {
-      padding: 10px;
+      padding: 12px;
       border-radius: 6px;
       border: none;
       outline: none;
+      font-size: 16px;
     }
 
     button {
       padding: 12px;
+
       border: none;
       border-radius: 8px;
+
       background: white;
       color: black;
+
       cursor: pointer;
+
       transition: 0.2s;
+      font-size: 16px;
     }
 
     button:hover {
@@ -128,11 +144,12 @@
 
     #melding {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 15px;
       color: lightgreen;
     }
 
     /* FOOTER */
+
     .footer {
       margin-top: 60px;
       background: #111;
@@ -143,13 +160,16 @@
     .footer-container {
       max-width: 1200px;
       margin: auto;
+
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
+
       gap: 30px;
     }
 
-    .footer p, .footer a {
+    .footer p,
+    .footer a {
       color: #ddd;
       text-decoration: none;
     }
@@ -161,15 +181,6 @@
 
     .footer-bottom button {
       padding: 12px 20px;
-      border: none;
-      background: white;
-      color: black;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .footer-bottom button:hover {
-      background: #ddd;
     }
   </style>
 </head>
@@ -179,60 +190,69 @@
   <div class="container">
 
     <!-- HERO -->
+
+    <div class="hero">
+
+      <h1 class="hero-title">Kapsalon Mooi Haar</h1>
+
+      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" alt="Kapsalon">
+
+    </div>
+
+    <!-- INTRO -->
+
+    <div class="intro">
+
+      <p>
+        Een frisse look is meer dan een kapsel — het is zelfvertrouwen dat je meteen uitstraalt.
+      </p>
+
+      <p>
+        Wij creëren stijlen die passen bij jouw persoonlijkheid en jouw leven.
+      </p>
+
+    </div>
+
+    <!-- FOTO'S -->
+
+    <div class="fotos">
+
+      <a href="kappers-voorstellen.html">
+        <img src="./kapster plaatje.webp" alt="Kapster">
+      </a>
+
+      <img src="./mannelijke kapper.jpg" alt="Kapper">
+
+    </div>
+
+    <!-- FORMULIER -->
+
     <div class="form-container">
 
-  <h2>Maak een afspraak 📅</h2>
+      <h2>Maak een afspraak 📅</h2>
 
-  <form id="afspraakForm">
+      <form id="afspraakForm">
 
-    <input type="text" id="naam" placeholder="Naam" required>
+        <input type="text" id="naam" placeholder="Naam" required>
 
-    <input type="email" id="email" placeholder="E-mail" required>
+        <input type="email" id="email" placeholder="E-mail" required>
 
-    <input type="date" id="datum" required>
+        <input type="date" id="datum" required>
 
-    <input type="time" id="tijd" required>
+        <input type="time" id="tijd" required>
 
-    <button type="submit">Verstuur afspraak</button>
+        <button type="submit">Verstuur afspraak</button>
 
-  </form>
+      </form>
 
-  <p id="melding"></p>
+      <p id="melding"></p>
 
-</div>
-
-   <!-- FOTO'S -->
-<div class="fotos">
-
-  <a href="kappers-voorstellen.html">
-    <img src="./kapster plaatje.webp" alt="stijl 1">
-  </a>
-    <img src="./mannelijke kapper.jpg" alt="stijl 2">
-
-</div>
-
-  <!-- AFSPRAAK FORMULIER -->
-  <div class="form-container">
-  
-    <h2>Maak een afspraak 📅</h2>
-
-    <form onsubmit="return sendForm(event)">
-
-      <input type="text" id="naam" placeholder="Naam" required>
-      <input type="email" id="email" placeholder="E-mail" required>
-      <input type="date" id="datum" required>
-      <input type="time" id="tijd" required>
-
-    <a href="afspraken.html">
-      <button type="submit">Verstuur afspraak</button>
-     </a>
-    </form>
-
-    <p id="melding"></p>
+    </div>
 
   </div>
 
   <!-- FOOTER -->
+
   <footer class="footer">
 
     <div class="footer-container">
@@ -244,6 +264,7 @@
 
       <div>
         <h3>Contact</h3>
+
         <p>Fellenoordstraat 1</p>
         <p>4811 TG Breda</p>
         <p>076-5201955</p>
@@ -252,6 +273,7 @@
 
       <div>
         <h3>Openingstijden</h3>
+
         <p>Ma — Gesloten</p>
         <p>Di - Vr — 09:00 - 18:00</p>
         <p>Do — 09:00 - 21:00</p>
@@ -262,54 +284,63 @@
     </div>
 
     <div class="footer-bottom">
+
       <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
         Maak een afspraak
       </button>
+
     </div>
 
   </footer>
 
   <!-- SCRIPT -->
+
   <script>
 
-document.getElementById("afspraakForm")
-.addEventListener("submit", function(event) {
+    document
+      .getElementById("afspraakForm")
+      .addEventListener("submit", function (event) {
 
-  event.preventDefault();
+        event.preventDefault();
 
-  let naam = document.getElementById("naam").value;
-  let email = document.getElementById("email").value;
-  let datum = document.getElementById("datum").value;
-  let tijd = document.getElementById("tijd").value;
+        let naam = document.getElementById("naam").value;
+        let email = document.getElementById("email").value;
+        let datum = document.getElementById("datum").value;
+        let tijd = document.getElementById("tijd").value;
 
-  emailjs.send("service_2gjvrq8", "template_igscaf7", {
+        emailjs.send(
+          "service_2gjvrq8",
+          "template_igscaf7",
+          {
+            naam: naam,
+            email: email,
+            datum: datum,
+            tijd: tijd
+          }
+        )
 
-    naam: naam,
-    email: email,
-    datum: datum,
-    tijd: tijd
-	
-  })
+          .then(function () {
 
-  .then(function(response) {
+            document.getElementById("melding").innerText =
+              "Bedankt " + naam + "! Je afspraak is succesvol verstuurd.";
 
-    document.getElementById("melding").innerText =
-      "Bedankt " + naam + "! Je afspraak is succesvol verstuurd.";
+            document.getElementById("afspraakForm").reset();
 
-    document.getElementById("afspraakForm").reset();
+          })
 
-  }, function(error) {
+          .catch(function (error) {
 
-    document.getElementById("melding").innerText =
-      "Er ging iets fout. Probeer opnieuw.";
+            document.getElementById("melding").innerText =
+              "Er ging iets fout. Probeer opnieuw.";
 
-    console.log(error);
+            console.log(error);
 
-  });
+          });
 
-});
+      });
 
-</script>
+  </script>
 
 </body>
+
 </html>
