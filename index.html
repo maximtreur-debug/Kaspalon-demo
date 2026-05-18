@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kapsalon Mooi Haar</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <script>
+    (function(){
+      emailjs.init("uqgU5EFcv74CZg8bB");
+    })();
+  </script>
 
   <style>
     body {
@@ -170,23 +179,27 @@
   <div class="container">
 
     <!-- HERO -->
-    <div class="hero">
+    <div class="form-container">
 
-      <h1 class="hero-title">Kapsalon Mooi Haar</h1>
+  <h2>Maak een afspraak 📅</h2>
 
-      <img src="./360_F_1101566589_ruviqeILb3IgLL4Z6peCNB7vaGkhYGEp.jpg" alt="kapsalon">
+  <form id="afspraakForm">
 
-    </div>
+    <input type="text" id="naam" placeholder="Naam" required>
 
-    <!-- TEKST -->
-    <div class="intro">
-      <p>
-        Een frisse look is meer dan een kapsel — het is zelfvertrouwen dat je meteen uitstraalt.
-      </p>
-      <p>
-        Wij creëren stijlen die passen bij jouw persoonlijkheid en jouw leven.
-      </p>
-    </div>
+    <input type="email" id="email" placeholder="E-mail" required>
+
+    <input type="date" id="datum" required>
+
+    <input type="time" id="tijd" required>
+
+    <button type="submit">Verstuur afspraak</button>
+
+  </form>
+
+  <p id="melding"></p>
+
+</div>
 
    <!-- FOTO'S -->
 <div class="fotos">
@@ -258,19 +271,45 @@
 
   <!-- SCRIPT -->
   <script>
-    function sendForm(event) {
-      event.preventDefault();
 
-      let naam = document.getElementById("naam").value;
-      let datum = document.getElementById("datum").value;
-      let tijd = document.getElementById("tijd").value;
+document.getElementById("afspraakForm")
+.addEventListener("submit", function(event) {
 
-      document.getElementById("melding").innerText =
-        "Bedankt " + naam + "! Je afspraak is gepland op " + datum + " om " + tijd + ".";
+  event.preventDefault();
 
-      return false;
-    }
-  </script>
+  let naam = document.getElementById("naam").value;
+  let email = document.getElementById("email").value;
+  let datum = document.getElementById("datum").value;
+  let tijd = document.getElementById("tijd").value;
+
+  emailjs.send("service_2gjvrq8", "template_igscaf7", {
+
+    naam: naam,
+    email: email,
+    datum: datum,
+    tijd: tijd
+	
+  })
+
+  .then(function(response) {
+
+    document.getElementById("melding").innerText =
+      "Bedankt " + naam + "! Je afspraak is succesvol verstuurd.";
+
+    document.getElementById("afspraakForm").reset();
+
+  }, function(error) {
+
+    document.getElementById("melding").innerText =
+      "Er ging iets fout. Probeer opnieuw.";
+
+    console.log(error);
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
