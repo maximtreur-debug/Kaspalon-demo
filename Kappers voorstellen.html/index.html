@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onze Knippers</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Aptos, sans-serif;
+      background: white;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    /* TITEL */
+    .pagina-titel {
+      text-align: center;
+      font-size: 70px;
+      font-family: "Times New Roman", serif;
+      margin-bottom: 60px;
+    }
+
+    /* KNIPPERS */
+    .knippers {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+    }
+
+    .knipper {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .knipper img {
+      width: 350px;
+      max-width: 100%;
+      border-radius: 16px;
+    }
+
+    .knipper-tekst {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .knipper-tekst h2 {
+      font-size: 40px;
+      margin-bottom: 10px;
+      font-family: "Times New Roman", serif;
+    }
+
+    .knipper-tekst p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* FORMULIER */
+    .form-container {
+      max-width: 500px;
+      margin: 80px auto;
+      padding: 25px;
+      background: #111;
+      color: white;
+      border-radius: 12px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input {
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: black;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #ddd;
+    }
+
+    #melding {
+      text-align: center;
+      margin-top: 10px;
+      color: lightgreen;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 60px;
+      background: #111;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .footer p {
+      color: #ddd;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .footer-bottom button {
+      padding: 12px 20px;
+      border: none;
+      background: white;
+      color: black;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .footer-bottom button:hover {
+      background: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- TITEL -->
+    <h1 class="pagina-titel">Onze Knippers</h1>
+
+    <!-- KNIPPERS -->
+    <div class="knippers">
+
+      <!-- KNIPPER 1 -->
+      <div class="knipper">
+
+        <img src="./kapster plaatje.webp" alt="Kapster">
+
+        <div class="knipper-tekst">
+          <h2>Sophie</h2>
+
+          <p>
+            Sophie is gespecialiseerd in moderne dameskapsels,
+            kleuringen en persoonlijke styling.
+          </p>
+
+          <p>
+            Met meer dan 8 jaar ervaring zorgt zij ervoor
+            dat iedere klant tevreden de salon verlaat.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- KNIPPER 2 -->
+      <div class="knipper">
+
+        <img src="./mannelijke kapper.jpg" alt="Mannelijke kapper">
+
+        <div class="knipper-tekst">
+          <h2>David</h2>
+
+          <p>
+            David focust zich op strakke fades,
+            herenkapsels en baardverzorging.
+          </p>
+
+          <p>
+            Zijn stijl combineert precisie met een moderne uitstraling.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- AFSPRAAK FORMULIER -->
+  <div class="form-container">
+
+    <h2>Maak een afspraak 📅</h2>
+
+    <form onsubmit="return sendForm(event)">
+
+      <input type="text" id="naam" placeholder="Naam" required>
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="date" id="datum" required>
+      <input type="time" id="tijd" required>
+
+      <button type="submit">Verstuur afspraak</button>
+
+    </form>
+
+    <p id="melding"></p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="footer-container">
+
+      <div>
+        <h2>Kapsalon Mooi Haar</h2>
+        <p>Service, advies & persoonlijke aandacht</p>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+        <p>Fellenoordstraat 1</p>
+        <p>4811 TG Breda</p>
+        <p>076-5201955</p>
+        <p>afspraak@kapsalonmooihaar.nl</p>
+      </div>
+
+      <div>
+        <h3>Openingstijden</h3>
+        <p>Ma — Gesloten</p>
+        <p>Di - Vr — 09:00 - 18:00</p>
+        <p>Do — 09:00 - 21:00</p>
+        <p>Za — 09:00 - 17:00</p>
+        <p>Zo — Gesloten</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
+        Maak een afspraak
+      </button>
+    </div>
+
+  </footer>
+
+  <script>
+    function sendForm(event) {
+      event.preventDefault();
+
+      let naam = document.getElementById("naam").value;
+      let datum = document.getElementById("datum").value;
+      let tijd = document.getElementById("tijd").value;
+
+      document.getElementById("melding").innerText =
+        "Bedankt " + naam + "! Je afspraak is gepland op " + datum + " om " + tijd + ".";
+
+      return false;
+    }
+  </script>
+
+</body>
+</html>
