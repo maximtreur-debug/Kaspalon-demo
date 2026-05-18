@@ -1,283 +1,334 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Onze Knippers</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kapsalon Mooi Haar</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Aptos, sans-serif;
-      background: white;
-      color: #222;
+<style>
+  :root {
+    --black: #111;
+    --white: #fff;
+    --gray: #f6f6f6;
+    --text: #222;
+    --accent: #c8a96a;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Aptos", sans-serif;
+  }
+
+  body {
+    background: var(--gray);
+    color: var(--text);
+  }
+
+  /* HERO */
+  .hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+      url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 60px;
+    font-family: "Times New Roman", serif;
+  }
+
+  .hero p {
+    margin-top: 10px;
+    font-size: 18px;
+    opacity: 0.9;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+  }
+
+  /* INTRO */
+  .intro {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .intro p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* TEAM */
+  .team {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .card {
+    display: flex;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+  }
+
+  .card img {
+    width: 320px;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .card-content {
+    padding: 30px;
+    flex: 1;
+  }
+
+  .card-content h2 {
+    font-size: 32px;
+    font-family: "Times New Roman", serif;
+    margin-bottom: 10px;
+  }
+
+  .card-content p {
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* FORM */
+  .form {
+    background: var(--black);
+    color: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 80px auto;
+  }
+
+  .form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    opacity: 0.8;
+  }
+
+  #melding {
+    margin-top: 10px;
+    text-align: center;
+    color: lightgreen;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0d0d0d;
+    color: white;
+    padding: 50px 20px;
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-grid h3 {
+    margin-bottom: 10px;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .footer-bottom button {
+    background: var(--accent);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 38px;
     }
 
-    .container {
-      max-width: 1300px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    /* TITEL */
-    .pagina-titel {
-      text-align: center;
-      font-size: 70px;
-      font-family: "Times New Roman", serif;
-      margin-bottom: 60px;
-    }
-
-    /* KNIPPERS */
-    .knippers {
-      display: flex;
+    .card {
       flex-direction: column;
-      gap: 50px;
     }
 
-    .knipper {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
+    .card img {
+      width: 100%;
+      height: 250px;
     }
+  }
 
-    .knipper img {
-      width: 350px;
-      max-width: 100%;
-      border-radius: 16px;
-    }
-
-    .knipper-tekst {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .knipper-tekst h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-      font-family: "Times New Roman", serif;
-    }
-
-    .knipper-tekst p {
-      font-size: 18px;
-      line-height: 1.7;
-    }
-
-    /* FORMULIER */
-    .form-container {
-      max-width: 500px;
-      margin: 80px auto;
-      padding: 25px;
-      background: #111;
-      color: white;
-      border-radius: 12px;
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input {
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      outline: none;
-    }
-
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: white;
-      color: black;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #ddd;
-    }
-
-    #melding {
-      text-align: center;
-      margin-top: 10px;
-      color: lightgreen;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      background: #111;
-      color: white;
-      padding: 40px 20px;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .footer p {
-      color: #ddd;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .footer-bottom button {
-      padding: 12px 20px;
-      border: none;
-      background: white;
-      color: black;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .footer-bottom button:hover {
-      background: #ddd;
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Kapsalon Mooi Haar</h1>
+    <p>Luxury hair styling & persoonlijke aandacht</p>
+  </div>
+</div>
 
-    <!-- TITEL -->
-    <h1 class="pagina-titel">Onze Knippers</h1>
+<!-- INTRO -->
+<div class="container">
+  <div class="intro">
+    <p>
+      Bij Kapsalon Mooi Haar draait alles om stijl, kwaliteit en persoonlijke aandacht.
+      Maak kennis met onze topstylisten en plan direct jouw afspraak.
+    </p>
+  </div>
 
-    <!-- KNIPPERS -->
-    <div class="knippers">
+  <!-- TEAM -->
+  <div class="team">
 
-      <!-- KNIPPER 1 -->
-      <div class="knipper">
-
-        <img src="./kapster plaatje.webp" alt="Kapster">
-
-        <div class="knipper-tekst">
-          <h2>Sophie</h2>
-
-          <p>
-            Sophie is gespecialiseerd in moderne dameskapsels,
-            kleuringen en persoonlijke styling.
-          </p>
-
-          <p>
-            Met meer dan 8 jaar ervaring zorgt zij ervoor
-            dat iedere klant tevreden de salon verlaat.
-          </p>
-        </div>
-
+    <!-- SOPHIE -->
+    <div class="card">
+      <a href="sophie.html">
+        <img src="./kapster plaatje.webp" alt="Sophie">
+      </a>
+      <div class="card-content">
+        <h2>Sophie</h2>
+        <p>
+          Sophie is gespecialiseerd in moderne dameskapsels, kleurtechnieken en styling.
+          Met jaren ervaring zorgt ze voor een luxe resultaat dat perfect bij jou past.
+        </p>
       </div>
+    </div>
 
-      <!-- KNIPPER 2 -->
-      <div class="knipper">
-
-        <img src="./mannelijke kapper.jpg" alt="Mannelijke kapper">
-
-        <div class="knipper-tekst">
-          <h2>David</h2>
-
-          <p>
-            David focust zich op strakke fades,
-            herenkapsels en baardverzorging.
-          </p>
-
-          <p>
-            Zijn stijl combineert precisie met een moderne uitstraling.
-          </p>
-        </div>
-
+    <!-- DAVID -->
+    <div class="card">
+      <a href="david.html">
+        <img src="./mannelijke kapper.jpg" alt="David">
+      </a>
+      <div class="card-content">
+        <h2>David</h2>
+        <p>
+          David is expert in fades, strakke herenkapsels en baardverzorging.
+          Zijn werk is precies, modern en altijd stijlvol.
+        </p>
       </div>
+    </div>
 
+  </div>
+</div>
+
+<!-- FORM -->
+<div class="form">
+  <h2>Maak een afspraak</h2>
+
+  <form onsubmit="return sendForm(event)">
+    <input type="text" id="naam" placeholder="Naam" required>
+    <input type="email" id="email" placeholder="E-mail" required>
+    <input type="date" id="datum" required>
+    <input type="time" id="tijd" required>
+    <button type="submit">Afspraak bevestigen</button>
+  </form>
+
+  <p id="melding"></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <h3>Kapsalon Mooi Haar</h3>
+      <p>Luxury hair & styling</p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>Breda, Nederland</p>
+      <p>076-5201955</p>
+      <p>info@mooihaar.nl</p>
+    </div>
+
+    <div>
+      <h3>Openingstijden</h3>
+      <p>Di - Vr: 09:00 - 18:00</p>
+      <p>Do: 09:00 - 21:00</p>
+      <p>Za: 09:00 - 17:00</p>
     </div>
 
   </div>
 
-  <!-- AFSPRAAK FORMULIER -->
-  <div class="form-container">
-
-    <h2>Maak een afspraak 📅</h2>
-
-    <form onsubmit="return sendForm(event)">
-
-      <input type="text" id="naam" placeholder="Naam" required>
-      <input type="email" id="email" placeholder="E-mail" required>
-      <input type="date" id="datum" required>
-      <input type="time" id="tijd" required>
-
-      <button type="submit">Verstuur afspraak</button>
-
-    </form>
-
-    <p id="melding"></p>
-
+  <div class="footer-bottom">
+    <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
+      Maak afspraak
+    </button>
   </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+<script>
+function sendForm(event) {
+  event.preventDefault();
 
-    <div class="footer-container">
+  let naam = document.getElementById("naam").value;
+  let datum = document.getElementById("datum").value;
+  let tijd = document.getElementById("tijd").value;
 
-      <div>
-        <h2>Kapsalon Mooi Haar</h2>
-        <p>Service, advies & persoonlijke aandacht</p>
-      </div>
+  document.getElementById("melding").innerText =
+    `Bedankt ${naam}! Je afspraak is gepland op ${datum} om ${tijd}.`;
 
-      <div>
-        <h3>Contact</h3>
-        <p>Fellenoordstraat 1</p>
-        <p>4811 TG Breda</p>
-        <p>076-5201955</p>
-        <p>afspraak@kapsalonmooihaar.nl</p>
-      </div>
-
-      <div>
-        <h3>Openingstijden</h3>
-        <p>Ma — Gesloten</p>
-        <p>Di - Vr — 09:00 - 18:00</p>
-        <p>Do — 09:00 - 21:00</p>
-        <p>Za — 09:00 - 17:00</p>
-        <p>Zo — Gesloten</p>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
-        Maak een afspraak
-      </button>
-    </div>
-
-  </footer>
-
-  <script>
-    function sendForm(event) {
-      event.preventDefault();
-
-      let naam = document.getElementById("naam").value;
-      let datum = document.getElementById("datum").value;
-      let tijd = document.getElementById("tijd").value;
-
-      document.getElementById("melding").innerText =
-        "Bedankt " + naam + "! Je afspraak is gepland op " + datum + " om " + tijd + ".";
-
-      return false;
-    }
-  </script>
+  return false;
+}
+</script>
 
 </body>
 </html>
