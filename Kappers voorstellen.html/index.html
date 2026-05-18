@@ -1,328 +1,331 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>kapsalon breda</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kapsalon Breda</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Aptos, sans-serif;
-      background: white;
-      color: #222;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: Aptos, sans-serif;
+    background: white;
+    color: #222;
+  }
 
-    .container {
-      max-width: 1300px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+  }
 
-    /* TITEL */
+  /* TITEL */
+  .pagina-titel {
+    text-align: center;
+    font-size: 70px;
+    font-family: "Times New Roman", serif;
+    margin: 40px 0 10px 0;
+  }
+
+  /* SUBTITEL */
+  .subtitel {
+    text-align: center;
+    font-size: 32px;
+    margin: 10px 0 40px 0;
+    font-family: "Times New Roman", serif;
+  }
+
+  /* INTRO */
+  .intro-tekst {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  /* KNIPPERS */
+  .knippers {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .knipper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .knipper img {
+    width: 320px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+    transition: 0.3s;
+    display: block;
+  }
+
+  .knipper img:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
+  }
+
+  .knipper-tekst {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .knipper-tekst h2 {
+    font-size: 40px;
+    font-family: "Times New Roman", serif;
+    margin-bottom: 10px;
+  }
+
+  .knipper-tekst p {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* FORMULIER */
+  .form-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 25px;
+    background: #111;
+    color: white;
+    border-radius: 12px;
+  }
+
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #ddd;
+  }
+
+  #melding {
+    text-align: center;
+    margin-top: 10px;
+    color: lightgreen;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 60px;
+    background: #111;
+    color: white;
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .footer p {
+    color: #ddd;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .footer-bottom button {
+    padding: 12px 20px;
+    border: none;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .footer-bottom button:hover {
+    background: #ddd;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
     .pagina-titel {
-      text-align: center;
-      font-size: 70px;
-      font-family: "Times New Roman", serif;
-      margin: 40px 0 20px 0;
-    }
-
-    /* INTRO TEKST */
-    .intro-tekst {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 60px auto;
-      font-size: 18px;
-      line-height: 1.7;
-      color: #444;
-    }
-
-    /* KNIPPERS */
-    .knippers {
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
+      font-size: 40px;
     }
 
     .knipper {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      text-align: center;
     }
 
     .knipper img {
-      width: 350px;
-      max-width: 100%;
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .knipper img:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
-    }
-
-    .knipper-tekst {
-      flex: 1;
-      min-width: 280px;
+      width: 100%;
+      height: 260px;
     }
 
     .knipper-tekst h2 {
-      font-size: 40px;
-      margin-bottom: 10px;
-      font-family: "Times New Roman", serif;
+      font-size: 28px;
     }
 
     .knipper-tekst p {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 16px;
     }
-
-    /* FORMULIER */
-    .form-container {
-      max-width: 500px;
-      margin: 80px auto;
-      padding: 25px;
-      background: #111;
-      color: white;
-      border-radius: 12px;
-    }
-
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    input {
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      outline: none;
-    }
-
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: white;
-      color: black;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #ddd;
-    }
-
-    #melding {
-      text-align: center;
-      margin-top: 10px;
-      color: lightgreen;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      background: #111;
-      color: white;
-      padding: 40px 20px;
-    }
-
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .footer p {
-      color: #ddd;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .footer-bottom button {
-      padding: 12px 20px;
-      border: none;
-      background: white;
-      color: black;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .footer-bottom button:hover {
-      background: #ddd;
-    }
-
-    /* RESPONSIVE (TELEFOON) */
-    @media (max-width: 768px) {
-
-      .pagina-titel {
-        font-size: 40px;
-      }
-
-      .knipper {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .knipper-tekst h2 {
-        font-size: 28px;
-      }
-
-      .knipper-tekst p {
-        font-size: 16px;
-      }
-    }
-
-  </style>
+  }
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- TITEL -->
-    <h1 class="pagina-titel">Kapsalon Breda</h1>
+  <!-- TITEL -->
+  <h1 class="pagina-titel">Kapsalon Breda</h1>
 
-    <!-- INTRO -->
-    <div class="intro-tekst">
-      <p>
-        Bij Kapsalon Breda werken onze ervaren stylisten met passie aan jouw look.
-        Hieronder maak je kennis met ons team van specialisten.
-      </p>
-    </div>
-	
-<h1> onze kappers </h1>
+  <h2 class="subtitel">Onze kappers</h2>
 
-    <!-- KNIPPERS -->
-    <div class="knippers">
+  <!-- INTRO -->
+  <div class="intro-tekst">
+    <p>
+      Bij Kapsalon Breda werken onze ervaren stylisten met passie aan jouw look.
+      Ontdek hieronder ons team en klik op een foto om meer te zien.
+    </p>
+  </div>
 
-      <!-- KNIPPER 1 -->
-      <div class="knipper">
+  <!-- KNIPPERS -->
+  <div class="knippers">
 
-        <a href="Kappers voorstellen.html">
-          <img src="./kapster plaatje.webp" alt="Sophie">
-        </a>
+    <!-- SOPHIE -->
+    <div class="knipper">
 
-        <div class="knipper-tekst">
-          <h2>Sophie</h2>
-          <p>
-            Sophie is gespecialiseerd in moderne dameskapsels, kleuringen en persoonlijke styling.
-          </p>
-          <p>
-            Met meer dan 8 jaar ervaring zorgt zij ervoor dat iedere klant tevreden de salon verlaat.
-          </p>
-        </div>
+      <a href="sophie.html">
+        <img src="./kapster plaatje.webp" alt="Sophie">
+      </a>
 
+      <div class="knipper-tekst">
+        <h2>Sophie</h2>
+        <p>
+          Sophie is gespecialiseerd in moderne dameskapsels, kleuringen en styling.
+        </p>
+        <p>
+          Met meer dan 8 jaar ervaring zorgt zij voor een perfect resultaat.
+        </p>
       </div>
 
-      <!-- KNIPPER 2 -->
-      <div class="knipper">
+    </div>
 
-        <a href="Kappers voorstellen.html">
-          <img src="./mannelijke kapper.jpg">
-        </a>
+    <!-- DAVID -->
+    <div class="knipper">
 
-        <div class="knipper-tekst">
-          <h2>David</h2>
-          <p>
-            David focust zich op strakke fades, herenkapsels en baardverzorging.
-          </p>
-          <p>
-            Zijn stijl combineert precisie met een moderne uitstraling.
-          </p>
-        </div>
+      <a href="david.html">
+        <img src="./mannelijke kapper.jpg" alt="David">
+      </a>
 
+      <div class="knipper-tekst">
+        <h2>David</h2>
+        <p>
+          David focust zich op strakke fades, herenkapsels en baardverzorging.
+        </p>
+        <p>
+          Zijn stijl is modern, precies en professioneel.
+        </p>
       </div>
 
     </div>
 
   </div>
 
-  <!-- AFSPRAAK FORMULIER -->
-  <div class="form-container">
+</div>
 
-    <h2>Maak een afspraak 📅</h2>
+<!-- FORM -->
+<div class="form-container">
 
-    <form onsubmit="return sendForm(event)">
+  <h2>Maak een afspraak 📅</h2>
 
-      <input type="text" id="naam" placeholder="Naam" required>
-      <input type="email" id="email" placeholder="E-mail" required>
-      <input type="date" id="datum" required>
-      <input type="time" id="tijd" required>
+  <form onsubmit="return sendForm(event)">
+    <input type="text" id="naam" placeholder="Naam" required>
+    <input type="email" id="email" placeholder="E-mail" required>
+    <input type="date" id="datum" required>
+    <input type="time" id="tijd" required>
+    <button type="submit">Verstuur afspraak</button>
+  </form>
 
-      <button type="submit">Verstuur afspraak</button>
+  <p id="melding"></p>
 
-    </form>
+</div>
 
-    <p id="melding"></p>
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div>
+      <h2>Kapsalon Breda</h2>
+      <p>Service & persoonlijke aandacht</p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>Breda, Nederland</p>
+      <p>076-12345678</p>
+      <p>info@kapsalon.nl</p>
+    </div>
+
+    <div>
+      <h3>Openingstijden</h3>
+      <p>Di - Vr: 09:00 - 18:00</p>
+      <p>Do: 09:00 - 21:00</p>
+      <p>Za: 09:00 - 17:00</p>
+    </div>
 
   </div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
+  <div class="footer-bottom">
+    <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
+      Maak afspraak
+    </button>
+  </div>
 
-    <div class="footer-container">
+</footer>
 
-      <div>
-        <h2>Kapsalon Mooi Haar</h2>
-        <p>Service, advies & persoonlijke aandacht</p>
-      </div>
+<script>
+function sendForm(event) {
+  event.preventDefault();
 
-      <div>
-        <h3>Contact</h3>
-        <p>Fellenoordstraat 1</p>
-        <p>4811 TG Breda</p>
-        <p>076-5201955</p>
-        <p>afspraak@kapsalonmooihaar.nl</p>
-      </div>
+  let naam = document.getElementById("naam").value;
+  let datum = document.getElementById("datum").value;
+  let tijd = document.getElementById("tijd").value;
 
-      <div>
-        <h3>Openingstijden</h3>
-        <p>Ma — Gesloten</p>
-        <p>Di - Vr — 09:00 - 18:00</p>
-        <p>Do — 09:00 - 21:00</p>
-        <p>Za — 09:00 - 17:00</p>
-        <p>Zo — Gesloten</p>
-      </div>
+  document.getElementById("melding").innerText =
+    `Bedankt ${naam}! Je afspraak is gepland op ${datum} om ${tijd}.`;
 
-    </div>
-
-    <div class="footer-bottom">
-      <button onclick="document.getElementById('naam').scrollIntoView({behavior:'smooth'})">
-        Maak een afspraak
-      </button>
-    </div>
-
-  </footer>
-
-  <script>
-    function sendForm(event) {
-      event.preventDefault();
-
-      let naam = document.getElementById("naam").value;
-      let datum = document.getElementById("datum").value;
-      let tijd = document.getElementById("tijd").value;
-
-      document.getElementById("melding").innerText =
-        "Bedankt " + naam + "! Je afspraak is gepland op " + datum + " om " + tijd + ".";
-
-      return false;
-    }
-  </script>
+  return false;
+}
+</script>
 
 </body>
 </html>
