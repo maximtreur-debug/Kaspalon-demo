@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacatures — Kapsalon Breda</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0b09;--surface:#131210;--surface2:#1a1814;
+  --cream:#f2ece0;--cream2:#d8d0c0;--gold:#b8924a;--gold2:#d4ac6a;
+  --gold3:rgba(184,146,74,0.12);--stone:#6b6560;--line:rgba(184,146,74,0.12);--line2:rgba(184,146,74,0.25)
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;cursor:none}
+#cur{width:6px;height:6px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+#cur.big{width:40px;height:40px;background:transparent;border:1px solid var(--gold);opacity:.7}
+
+nav{position:fixed;top:0;width:100%;z-index:500;height:72px;display:flex;justify-content:space-between;align-items:center;padding:0 64px;border-bottom:1px solid var(--line);background:rgba(12,11,9,.88);backdrop-filter:blur(20px)}
+.logo{font-family:'Cormorant',serif;font-size:22px;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:.06em}
+.logo em{color:var(--gold);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:.2s}
+.nav-back:hover{color:var(--gold)}
+
+/* PAGE HERO */
+.page-hero{min-height:60vh;display:flex;flex-direction:column;justify-content:flex-end;padding:140px 64px 80px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.page-hero::before{content:'VACATURES';position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-family:'Cormorant',serif;font-size:clamp(100px,18vw,220px);font-weight:300;color:rgba(184,146,74,.04);pointer-events:none;white-space:nowrap;line-height:1}
+.ph-eye{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .8s .1s forwards}
+.ph-eye::before{content:'';width:32px;height:1px;background:var(--gold)}
+.page-hero h1{font-family:'Cormorant',serif;font-size:clamp(56px,7vw,100px);font-weight:300;line-height:.95;margin-bottom:28px;opacity:0;animation:up .9s .22s forwards}
+.page-hero h1 em{display:block;font-style:italic;color:var(--gold2)}
+.ph-body{font-size:16px;font-weight:300;color:var(--stone);line-height:1.9;max-width:560px;opacity:0;animation:up .9s .38s forwards}
+
+/* VACATURE CARDS */
+.vacatures-section{padding:100px 0;background:var(--bg)}
+.vac-inner{max-width:1100px;margin:0 auto;padding:0 64px}
+.eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:56px}
+.eyebrow span{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--line)}
+
+.vac-list{display:flex;flex-direction:column;gap:2px}
+.vac-card{background:var(--surface);border:1px solid var(--line);padding:0;overflow:hidden;transition:.3s}
+.vac-card:hover{border-color:var(--line2)}
+.vac-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:44px 52px;gap:32px;cursor:pointer}
+.vac-head:hover .vac-arrow{transform:translateX(4px)}
+.vh-left{}
+.vac-status{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.vac-title{font-family:'Cormorant',serif;font-size:32px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.vac-meta{display:flex;gap:24px;flex-wrap:wrap}
+.vm{font-size:12px;letter-spacing:.12em;color:var(--stone)}
+.vm strong{color:var(--cream2);font-weight:400}
+.vac-arrow{font-size:22px;color:var(--gold);transition:.3s;font-weight:300}
+
+.vac-body{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s}
+.vac-body.open{max-height:800px}
+.vb-inner{padding:0 52px 52px;border-top:1px solid var(--line)}
+.vb-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px}
+.vb-col h3{font-family:'Cormorant',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:20px}
+.vb-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.vb-col li{font-size:14px;font-weight:300;color:var(--stone);padding-left:20px;position:relative;line-height:1.7}
+.vb-col li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.vac-apply{display:inline-flex;align-items:center;gap:12px;margin-top:40px;padding:16px 44px;background:var(--gold);color:var(--bg);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.25s;font-family:'Outfit',sans-serif;font-weight:500}
+.vac-apply:hover{background:var(--gold2)}
+
+/* OPEN SOLLICITATIE */
+.open-section{padding:100px 0;background:var(--surface)}
+.open-inner{max-width:1100px;margin:0 auto;padding:0 64px}
+.open-card{background:var(--surface2);border:1px solid var(--line2);padding:72px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.oc-left h2{font-family:'Cormorant',serif;font-size:clamp(34px,4vw,50px);font-weight:300;line-height:1.1;margin-bottom:20px}
+.oc-left h2 em{color:var(--gold);font-style:italic}
+.oc-left p{font-size:15px;font-weight:300;line-height:1.9;color:var(--stone)}
+.oc-right{}
+.open-form{display:flex;flex-direction:column;gap:16px}
+label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+input,textarea{width:100%;padding:14px 18px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--cream);font-size:14px;font-family:'Outfit',sans-serif;outline:none;transition:.2s;resize:none;-webkit-appearance:none}
+input:focus,textarea:focus{border-color:var(--gold);background:rgba(184,146,74,.05)}
+.field{display:flex;flex-direction:column;gap:8px}
+.btn-submit{width:100%;margin-top:4px;padding:16px;background:var(--gold);color:var(--bg);border:none;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.25s;font-family:'Outfit',sans-serif;font-weight:500}
+.btn-submit:hover{background:var(--gold2)}
+#form-msg{font-size:13px;font-weight:300;color:var(--gold2);text-align:center;margin-top:8px;min-height:18px}
+
+/* WAAROM WIJ */
+.why-section{padding:100px 0;background:var(--bg)}
+.why-inner{max-width:1100px;margin:0 auto;padding:0 64px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:64px}
+.wc{background:var(--surface);padding:44px 36px;border:1px solid var(--line);transition:.3s}
+.wc:hover{border-color:var(--line2);transform:translateY(-3px)}
+.wc-n{font-family:'Cormorant',serif;font-size:48px;font-weight:300;color:var(--gold3);line-height:1;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:16px}
+.wc-n span{color:var(--gold2)}
+.wc h3{font-family:'Cormorant',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:12px}
+.wc p{font-size:13px;font-weight:300;line-height:1.8;color:var(--stone)}
+
+footer{background:#07060504;border-top:1px solid var(--line);padding:80px 64px 40px}
+.footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr;gap:60px;padding-bottom:56px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.fc h3{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.fc p,.fc a{font-size:14px;font-weight:300;line-height:2.2;color:var(--stone);text-decoration:none;display:block;transition:.2s}
+.fc a:hover{color:var(--gold2)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:12px;color:rgba(242,236,224,.2);letter-spacing:.06em}
+.footer-cta{padding:12px 28px;border:1px solid var(--line2);color:var(--gold);font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.2s}
+.footer-cta:hover{background:var(--gold);color:var(--bg)}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .page-hero{padding:120px 24px 60px}
+  .vac-inner,.open-inner,.why-inner{padding:0 24px}
+  .vac-head{padding:32px 24px}
+  .vb-inner{padding:0 24px 36px}
+  .vb-grid{grid-template-columns:1fr}
+  .open-card{grid-template-columns:1fr;padding:40px 28px}
+  .why-grid{grid-template-columns:1fr 1fr}
+  footer{padding:60px 24px 36px}
+  .footer-top{grid-template-columns:1fr;gap:36px}
+  #cur{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+
+<nav>
+  <a class="logo" href="index.html">Kapsalon <em>Breda</em></a>
+  <a class="nav-back" href="index.html">← Terug naar overzicht</a>
+</nav>
+
+<section class="page-hero">
+  <p class="ph-eye">Kom ons team versterken</p>
+  <h1>Werk bij<em>Kapsalon Breda.</em></h1>
+  <p class="ph-body">Wij zijn op zoek naar gepassioneerde vakmensen die willen groeien in een warme, professionele omgeving. Jouw talent verdient een plek waar het echt tot bloei kan komen.</p>
+</section>
+
+<!-- OPENSTAANDE VACATURES -->
+<section class="vacatures-section">
+  <div class="vac-inner">
+    <div class="eyebrow reveal"><span>Openstaande vacatures</span></div>
+
+    <div class="vac-list">
+
+      <!-- Vacature 1 -->
+      <div class="vac-card reveal">
+        <div class="vac-head" onclick="toggleVac(this)">
+          <div class="vh-left">
+            <div class="vac-status">● Nu open</div>
+            <div class="vac-title">Kapper / Styliste Dames</div>
+            <div class="vac-meta">
+              <span class="vm"><strong>Type:</strong> Parttime of fulltime</span>
+              <span class="vm"><strong>Uren:</strong> 24–40 uur/week</span>
+              <span class="vm"><strong>Locatie:</strong> Breda Centrum</span>
+            </div>
+          </div>
+          <div class="vac-arrow">+</div>
+        </div>
+        <div class="vac-body">
+          <div class="vb-inner">
+            <div class="vb-grid">
+              <div class="vb-col">
+                <h3>Wat je doet</h3>
+                <ul>
+                  <li>Knippen, föhnen en stylen van dameskapsels</li>
+                  <li>Kleurbehandelingen: kleuren, highlights, balayage</li>
+                  <li>Persoonlijk advies geven aan klanten</li>
+                  <li>Samenwerken in een hecht team</li>
+                  <li>Bijdragen aan een prettige salonsfeer</li>
+                </ul>
+              </div>
+              <div class="vb-col">
+                <h3>Wat wij vragen</h3>
+                <ul>
+                  <li>Afgeronde kappersopleiding (niveau 3 of 4)</li>
+                  <li>Minimaal 1 jaar werkervaring</li>
+                  <li>Passie voor het vak en voor klanten</li>
+                  <li>Ervaring met kleurtechnieken is een pré</li>
+                  <li>Goede communicatieve vaardigheden</li>
+                </ul>
+              </div>
+            </div>
+            <a href="mailto:info@kapsalon.nl?subject=Sollicitatie Kapper Dames" class="vac-apply">Solliciteer direct →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vacature 2 -->
+      <div class="vac-card reveal d1">
+        <div class="vac-head" onclick="toggleVac(this)">
+          <div class="vh-left">
+            <div class="vac-status">● Nu open</div>
+            <div class="vac-title">Barber / Herenspecialist</div>
+            <div class="vac-meta">
+              <span class="vm"><strong>Type:</strong> Parttime of fulltime</span>
+              <span class="vm"><strong>Uren:</strong> 20–40 uur/week</span>
+              <span class="vm"><strong>Locatie:</strong> Breda Centrum</span>
+            </div>
+          </div>
+          <div class="vac-arrow">+</div>
+        </div>
+        <div class="vac-body">
+          <div class="vb-inner">
+            <div class="vb-grid">
+              <div class="vb-col">
+                <h3>Wat je doet</h3>
+                <ul>
+                  <li>Uitvoeren van fades, undercuts en herenkapsels</li>
+                  <li>Baard trimmen, contouren en hot towel shaves</li>
+                  <li>Klanten adviseren over verzorging en stijl</li>
+                  <li>Bijhouden van de nieuwste barbertechnieken</li>
+                  <li>Opbouwen van een eigen vaste klantenkring</li>
+                </ul>
+              </div>
+              <div class="vb-col">
+                <h3>Wat wij vragen</h3>
+                <ul>
+                  <li>Barberdiploma of kappersopleiding niveau 3+</li>
+                  <li>Aantoonbare ervaring met fades</li>
+                  <li>Oog voor detail en precisie</li>
+                  <li>Professionele en vriendelijke houding</li>
+                  <li>Zelfstandig én in teamverband kunnen werken</li>
+                </ul>
+              </div>
+            </div>
+            <a href="mailto:info@kapsalon.nl?subject=Sollicitatie Barber" class="vac-apply">Solliciteer direct →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vacature 3 -->
+      <div class="vac-card reveal d2">
+        <div class="vac-head" onclick="toggleVac(this)">
+          <div class="vh-left">
+            <div class="vac-status" style="color:var(--stone)">○ Binnenkort</div>
+            <div class="vac-title">Stagiair(e) Haarverzorging</div>
+            <div class="vac-meta">
+              <span class="vm"><strong>Type:</strong> Stage (BBL/BOL)</span>
+              <span class="vm"><strong>Uren:</strong> In overleg</span>
+              <span class="vm"><strong>Locatie:</strong> Breda Centrum</span>
+            </div>
+          </div>
+          <div class="vac-arrow">+</div>
+        </div>
+        <div class="vac-body">
+          <div class="vb-inner">
+            <div class="vb-grid">
+              <div class="vb-col">
+                <h3>Wat je doet</h3>
+                <ul>
+                  <li>Leren van echte vakmensen in de praktijk</li>
+                  <li>Klanten wassen, wassen en begeleiden</li>
+                  <li>Basis kniptechnieken onder begeleiding oefenen</li>
+                  <li>Kennismaken met kleurbehandelingen</li>
+                  <li>Meedraaien in de dagelijkse salonorganisatie</li>
+                </ul>
+              </div>
+              <div class="vb-col">
+                <h3>Wat wij vragen</h3>
+                <ul>
+                  <li>Kappersopleiding niveau 2, 3 of 4 (BBL of BOL)</li>
+                  <li>Enthousiasme en leergierigheid</li>
+                  <li>Klantvriendelijke en nette uitstraling</li>
+                  <li>Gemotiveerd om te groeien in het vak</li>
+                  <li>Betrouwbaar en punctueel</li>
+                </ul>
+              </div>
+            </div>
+            <a href="mailto:info@kapsalon.nl?subject=Stageverzoek Haarverzorging" class="vac-apply">Stuur een stageverzoek →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAAROM WIJ -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="eyebrow reveal"><span>Waarom Kapsalon Breda?</span></div>
+    <h2 class="reveal" style="font-family:'Cormorant',serif;font-size:clamp(34px,4vw,50px);font-weight:300;line-height:1.1;margin-bottom:64px">Een plek waar jij <em style="color:var(--gold);font-style:italic">kunt groeien.</em></h2>
+    <div class="why-grid">
+      <div class="wc reveal">
+        <div class="wc-n"><span>01</span></div>
+        <h3>Persoonlijke groei</h3>
+        <p>Regelmatige trainingen, workshops en masterclasses. Wij investeren in jouw ontwikkeling als vakman of vakvrouw.</p>
+      </div>
+      <div class="wc reveal d1">
+        <div class="wc-n"><span>02</span></div>
+        <h3>Fijn team</h3>
+        <p>Een kleine, hechte ploeg waar iedereen wordt gehoord en gewaardeerd. Geen hiërarchie — gewoon mensen die samen goed werk leveren.</p>
+      </div>
+      <div class="wc reveal d2">
+        <div class="wc-n"><span>03</span></div>
+        <h3>Eerlijk salaris</h3>
+        <p>Marktconform loon met ruimte voor groei. Inclusief reiskostenvergoeding en fooienverdeling op basis van gelijkheid.</p>
+      </div>
+      <div class="wc reveal d3">
+        <div class="wc-n"><span>04</span></div>
+        <h3>Centrale locatie</h3>
+        <p>Hartje Breda, goed bereikbaar met OV en fiets. Moderne werkplek met de beste producten en materialen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOLLICITATIE -->
+<section class="open-section">
+  <div class="open-inner">
+    <div class="open-card reveal">
+      <div class="oc-left">
+        <div class="eyebrow" style="margin-bottom:28px"><span>Open sollicitatie</span></div>
+        <h2>Jouw plek staat <em>klaar.</em></h2>
+        <p style="margin-top:16px">Zie je jouw vacature er niet bij? Stuur ons gewoon een berichtje. Wij zijn altijd op zoek naar talent dat bij ons team past — ongeacht de functie.</p>
+      </div>
+      <div class="oc-right">
+        <form class="open-form" onsubmit="submitOpen(event)">
+          <div class="field">
+            <label>Naam</label>
+            <input type="text" id="on" placeholder="Jouw naam" required>
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input type="email" id="oe" placeholder="jouw@email.nl" required>
+          </div>
+          <div class="field">
+            <label>Vertel iets over jezelf</label>
+            <textarea id="om" rows="4" placeholder="Jouw ervaring, ambitie en waarom je bij ons wilt werken..." required></textarea>
+          </div>
+          <button class="btn-submit" type="submit">Verstuur sollicitatie</button>
+          <p id="form-msg"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div>
+      <a class="logo" href="index.html" style="display:inline-block;margin-bottom:16px">Kapsalon <em>Breda</em></a>
+      <p style="font-size:14px;font-weight:300;line-height:1.9;color:var(--stone);max-width:280px">Service, vakmanschap en persoonlijke aandacht. Wij zorgen dat jij de deur uitstapt met een goed gevoel.</p>
+    </div>
+    <div class="fc">
+      <h3>Contact</h3>
+      <a href="tel:0765201955">076-5201955</a>
+      <a href="mailto:info@kapsalon.nl">info@kapsalon.nl</a>
+      <p>Breda, Centrum</p>
+    </div>
+    <div class="fc">
+      <h3>Openingstijden</h3>
+      <p>Maandag: gesloten<br>Di – Wo: 09:00 – 18:00<br>Donderdag: 09:00 – 21:00<br>Vrijdag: 09:00 – 18:00<br>Zaterdag: 09:00 – 17:00</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Kapsalon Breda — Alle rechten voorbehouden</p>
+    <a href="index.html#afspraak" class="footer-cta">Afspraak maken</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.querySelectorAll('a,button,input,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
+});
+
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function toggleVac(head){
+  const body=head.nextElementSibling;
+  const arrow=head.querySelector('.vac-arrow');
+  const isOpen=body.classList.toggle('open');
+  arrow.textContent=isOpen?'−':'+';
+}
+
+function submitOpen(e){
+  e.preventDefault();
+  const naam=document.getElementById('on').value.trim();
+  document.getElementById('form-msg').textContent=`Bedankt ${naam}! We nemen zo snel mogelijk contact met je op.`;
+  e.target.reset();
+}
+</script>
+</body>
+</html>
