@@ -1,210 +1,285 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sophie — Kapsalon Breda</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink: #0e0d0b; --fog: #f7f4ef; --gold: #b8965a;
-  --gold2: #d4ae78; --stone: #8c8680; --line: rgba(184,150,90,0.22);
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0b09;--surface:#131210;--surface2:#1a1814;
+  --cream:#f2ece0;--cream2:#d8d0c0;--gold:#b8924a;--gold2:#d4ac6a;
+  --gold3:rgba(184,146,74,0.12);--stone:#6b6560;--line:rgba(184,146,74,0.12);--line2:rgba(184,146,74,0.25)
 }
-html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--fog); color: var(--ink); overflow-x: hidden; }
- 
-.cursor {
-  width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
-  position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%); mix-blend-mode: multiply;
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
-.cursor.grow { width: 36px; height: 36px; background: rgba(184,150,90,0.3); }
- 
-nav {
-  position: fixed; top: 0; width: 100%; z-index: 200;
-  height: 68px; padding: 0 60px;
-  display: flex; justify-content: space-between; align-items: center;
-  background: rgba(247,244,239,0.92); backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
-}
-.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: 0.04em; }
-.nav-logo span { color: var(--gold); }
-.nav-back { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--stone); text-decoration: none; transition: color 0.2s; }
-.nav-back:hover { color: var(--gold); }
- 
-.profile-hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 68px; overflow: hidden; }
- 
-.profile-image { position: relative; overflow: hidden; }
-.profile-image img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.88); }
-.profile-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 60%, var(--fog) 100%); pointer-events: none; }
- 
-.profile-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 72px 80px 60px; }
- 
-.profile-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; opacity: 0; animation: rise 0.9s 0.2s forwards; }
-.profile-eyebrow::before { content: '01'; font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 300; }
- 
-.profile-content h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(70px, 8vw, 110px); font-weight: 300; line-height: 0.95; color: var(--ink); margin-bottom: 8px; opacity: 0; animation: rise 0.9s 0.32s forwards; }
-.profile-content h1 em { font-style: italic; color: var(--gold); display: block; }
- 
-.profile-subtitle { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); margin-bottom: 40px; opacity: 0; animation: rise 0.9s 0.42s forwards; }
-.profile-divider { width: 48px; height: 1px; background: var(--gold); margin-bottom: 36px; opacity: 0; animation: rise 0.9s 0.44s forwards; }
- 
-.profile-bio { font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--stone); margin-bottom: 14px; opacity: 0; animation: rise 0.9s 0.5s forwards; }
- 
-.profile-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0 44px; opacity: 0; animation: rise 0.9s 0.64s forwards; }
-.profile-tag { padding: 7px 16px; border: 1px solid var(--line); border-radius: 20px; font-size: 11px; letter-spacing: 0.12em; color: var(--stone); transition: border-color 0.2s, color 0.2s; }
-.profile-tag:hover { border-color: var(--gold); color: var(--gold); }
- 
-.profile-cta { display: flex; align-items: center; gap: 20px; opacity: 0; animation: rise 0.9s 0.76s forwards; }
-.btn-book { padding: 16px 42px; background: var(--ink); color: var(--fog); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.25s, transform 0.2s; }
-.btn-book:hover { background: var(--gold); transform: translateY(-2px); }
-.btn-ghost { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; transition: color 0.2s, border-color 0.2s; }
-.btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
- 
-.stats-bar { background: var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); }
-.stat-item { padding: 52px 40px; border-right: 1px solid rgba(184,150,90,0.1); text-align: center; }
-.stat-item:last-child { border-right: none; }
-.stat-item strong { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: var(--gold2); display: block; line-height: 1; margin-bottom: 8px; }
-.stat-item span { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.4); }
- 
-.specialties-section { padding: 120px 60px; max-width: 1100px; margin: auto; }
-.section-eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 56px; display: flex; align-items: center; gap: 16px; }
-.section-eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--line); }
- 
-.spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.spec-card { padding: 44px 36px; background: white; position: relative; overflow: hidden; transition: transform 0.3s, background 0.3s; }
-.spec-card::before { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
-.spec-card:hover { background: var(--fog); transform: translateY(-4px); }
-.spec-card:hover::before { width: 100%; }
-.spec-icon { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-style: italic; font-weight: 300; color: var(--gold2); display: block; margin-bottom: 20px; line-height: 1; }
-.spec-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 12px; }
-.spec-card p { font-size: 14px; font-weight: 300; line-height: 1.8; color: var(--stone); }
- 
-footer { background: #0a0908; color: rgba(247,244,239,0.5); padding: 80px 60px 44px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 56px; border-bottom: 1px solid rgba(184,150,90,0.1); margin-bottom: 40px; }
-.footer-brand h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: var(--fog); margin-bottom: 14px; }
-.footer-brand h2 span { color: var(--gold); font-style: italic; }
-.footer-brand p { font-size: 14px; font-weight: 300; line-height: 1.9; max-width: 260px; }
-.footer-col h3 { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-.footer-col p { font-size: 14px; font-weight: 300; line-height: 2.2; }
-.footer-col a { color: inherit; text-decoration: none; transition: color 0.2s; }
-.footer-col a:hover { color: var(--gold2); }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.footer-bottom p { font-size: 12px; color: rgba(247,244,239,0.2); letter-spacing: 0.06em; }
-.footer-cta { padding: 12px 28px; border: 1px solid rgba(184,150,90,0.3); color: var(--gold); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-radius: 2px; transition: background 0.2s, color 0.2s; }
-.footer-cta:hover { background: var(--gold); color: var(--ink); }
- 
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.24s; }
- 
-@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
- 
-@media (max-width: 960px) {
-  nav { padding: 0 24px; }
-  .profile-hero { grid-template-columns: 1fr; }
-  .profile-image { height: 60vw; }
-  .profile-image::after { background: linear-gradient(to top, var(--fog) 0%, transparent 40%); }
-  .profile-content { padding: 60px 24px 80px; }
-  .stats-bar { grid-template-columns: 1fr; }
-  .stat-item { border-right: none; border-bottom: 1px solid rgba(184,150,90,0.1); padding: 36px 24px; }
-  .specialties-section { padding: 80px 24px; }
-  .spec-grid { grid-template-columns: 1fr; }
-  footer { padding: 60px 24px 36px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-  .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .cursor { display: none; }
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--cream);overflow-x:hidden;cursor:none}
+#cur{width:6px;height:6px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s,height .25s}
+#cur.big{width:40px;height:40px;background:transparent;border:1px solid var(--gold);opacity:.7}
+
+nav{position:fixed;top:0;width:100%;z-index:500;height:72px;display:flex;justify-content:space-between;align-items:center;padding:0 64px;border-bottom:1px solid var(--line);background:rgba(12,11,9,.88);backdrop-filter:blur(20px)}
+.logo{font-family:'Cormorant',serif;font-size:22px;font-weight:400;color:var(--cream);text-decoration:none;letter-spacing:.06em}
+.logo em{color:var(--gold);font-style:italic}
+.nav-back{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:.2s}
+.nav-back:hover{color:var(--gold)}
+
+/* HERO — split */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:72px}
+.hero-img{position:relative;overflow:hidden}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.75);transition:transform 8s ease}
+.hero-img:hover img{transform:scale(1.04)}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--bg) 100%);pointer-events:none}
+
+/* floating number */
+.hero-bignum{position:absolute;bottom:40px;left:40px;font-family:'Cormorant',serif;font-size:160px;font-weight:300;line-height:1;color:rgba(184,146,74,.1);pointer-events:none;z-index:1}
+
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 72px}
+.hc-eye{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;opacity:0;animation:up .8s .1s forwards}
+.hc-eye::before{content:'01';font-family:'Cormorant',serif;font-size:14px;font-weight:300;color:rgba(184,146,74,.5)}
+.hero-content h1{font-family:'Cormorant',serif;font-size:clamp(80px,8vw,120px);font-weight:300;line-height:.92;opacity:0;animation:up .9s .22s forwards}
+.hero-content h1 em{display:block;font-style:italic;color:var(--gold2)}
+.hc-sub{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);margin:20px 0 36px;opacity:0;animation:up .9s .34s forwards}
+.hc-line{width:48px;height:1px;background:var(--gold);margin-bottom:36px;opacity:0;animation:up .9s .4s forwards}
+.hc-bio{font-size:15px;font-weight:300;line-height:1.95;color:var(--stone);max-width:380px;margin-bottom:12px;opacity:0;animation:up .9s .48s forwards}
+.hc-tags{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 44px;opacity:0;animation:up .9s .6s forwards}
+.htag{padding:7px 16px;border:1px solid var(--line2);font-size:11px;letter-spacing:.1em;color:var(--stone);transition:.2s}
+.htag:hover{border-color:var(--gold);color:var(--gold2)}
+.hc-cta{display:flex;gap:20px;align-items:center;opacity:0;animation:up .9s .72s forwards}
+.btn-p{padding:16px 44px;background:var(--gold);color:var(--bg);font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.25s;font-family:'Outfit',sans-serif;font-weight:500}
+.btn-p:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-g{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px;transition:.2s}
+.btn-g:hover{color:var(--gold);border-color:var(--gold)}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface)}
+.sitem{padding:56px 40px;text-align:center;border-right:1px solid var(--line);position:relative;overflow:hidden}
+.sitem:last-child{border-right:none}
+.sitem::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:.5s}
+.sitem:hover::after{width:60%}
+.sitem strong{font-family:'Cormorant',serif;font-size:64px;font-weight:300;color:var(--gold2);display:block;line-height:1;margin-bottom:8px}
+.sitem span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+
+/* OVER SOPHIE */
+.about-section{padding:120px 0;background:var(--bg)}
+.about-inner{max-width:1280px;margin:0 auto;padding:0 64px;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+.eyebrow span{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--line)}
+.section-title{font-family:'Cormorant',serif;font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.1;margin-bottom:24px}
+.section-title em{color:var(--gold);font-style:italic}
+.about-body p{font-size:15px;font-weight:300;line-height:1.95;color:var(--stone);margin-bottom:16px}
+
+/* CV TIJDLIJN */
+.cv-section{padding:0 0 120px;background:var(--bg)}
+.cv-inner{max-width:1280px;margin:0 auto;padding:0 64px}
+.timeline{display:flex;flex-direction:column;gap:0;border-left:1px solid var(--line);padding-left:48px;margin-left:12px}
+.titem{position:relative;padding:0 0 48px}
+.titem::before{content:'';position:absolute;left:-55px;top:6px;width:12px;height:12px;border:1px solid var(--gold);background:var(--bg);border-radius:50%}
+.titem:hover::before{background:var(--gold)}
+.tyear{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.ttitle{font-family:'Cormorant',serif;font-size:22px;font-weight:400;color:var(--cream);margin-bottom:8px}
+.tdesc{font-size:14px;font-weight:300;line-height:1.8;color:var(--stone);max-width:480px}
+
+/* HOBBIES */
+.hobbies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.hobby-card{background:var(--surface);padding:40px 32px;border:1px solid var(--line);transition:.3s}
+.hobby-card:hover{border-color:var(--line2);transform:translateY(-3px)}
+.hobby-icon{font-size:32px;margin-bottom:16px;display:block}
+.hobby-card h3{font-family:'Cormorant',serif;font-size:20px;font-weight:400;color:var(--cream);margin-bottom:10px}
+.hobby-card p{font-size:13px;font-weight:300;line-height:1.8;color:var(--stone)}
+
+/* SPECIALTIES */
+.spec-section{padding:120px 0;background:var(--surface)}
+.spec-inner{max-width:1280px;margin:0 auto;padding:0 64px}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.sc{background:var(--surface2);padding:52px 40px;border:1px solid var(--line);position:relative;overflow:hidden;transition:.3s}
+.sc::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:.4s}
+.sc:hover{transform:translateY(-4px)}
+.sc:hover::after{width:100%}
+.sc-num{font-family:'Cormorant',serif;font-size:14px;font-style:italic;color:var(--gold);display:block;margin-bottom:20px}
+.sc h3{font-family:'Cormorant',serif;font-size:24px;font-weight:400;color:var(--cream);margin-bottom:14px}
+.sc p{font-size:14px;font-weight:300;line-height:1.85;color:var(--stone)}
+
+/* FOOTER */
+footer{background:#07060504;border-top:1px solid var(--line);padding:80px 64px 40px}
+.footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr;gap:60px;padding-bottom:56px;border-bottom:1px solid var(--line);margin-bottom:40px}
+.fc h3{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.fc p,.fc a{font-size:14px;font-weight:300;line-height:2.2;color:var(--stone);text-decoration:none;display:block;transition:.2s}
+.fc a:hover{color:var(--gold2)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-bottom p{font-size:12px;color:rgba(242,236,224,.2);letter-spacing:.06em}
+.footer-cta{padding:12px 28px;border:1px solid var(--line2);color:var(--gold);font-size:10px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:.2s}
+.footer-cta:hover{background:var(--gold);color:var(--bg)}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:960px){
+  nav{padding:0 24px}
+  .hero{grid-template-columns:1fr}
+  .hero-img{height:60vw}
+  .hero-img::after{background:linear-gradient(to top,var(--bg) 0%,transparent 40%)}
+  .hero-content{padding:48px 24px 72px}
+  .stats{grid-template-columns:1fr}
+  .sitem{border-right:none;border-bottom:1px solid var(--line)}
+  .about-inner{grid-template-columns:1fr;gap:48px;padding:0 24px}
+  .cv-inner,.spec-inner{padding:0 24px}
+  .spec-grid,.hobbies-grid{grid-template-columns:1fr}
+  footer{padding:60px 24px 36px}
+  .footer-top{grid-template-columns:1fr;gap:36px}
+  #cur{display:none}
 }
 </style>
 </head>
 <body>
- 
-<div class="cursor" id="cursor"></div>
- 
+
+<div id="cur"></div>
+
 <nav>
-  <a class="nav-logo" href="index.html">Kapsalon <span>Breda</span></a>
-  <a class="nav-back" href="index.html">
-    ← Terug naar overzicht
-  </a>
+  <a class="logo" href="index.html">Kapsalon <em>Breda</em></a>
+  <a class="nav-back" href="index.html">← Terug naar overzicht</a>
 </nav>
- 
-<section class="profile-hero">
-  <div class="profile-image">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img">
     <img src="./kapster plaatje.webp" alt="Sophie — Styliste">
+    <div class="hero-bignum">01</div>
   </div>
-  <div class="profile-content">
-    <p class="profile-eyebrow">— Styliste</p>
+  <div class="hero-content">
+    <p class="hc-eye">— Styliste</p>
     <h1>Sophie<em>.</em></h1>
-    <p class="profile-subtitle">Dames &amp; kleur specialist</p>
-    <div class="profile-divider"></div>
-    <p class="profile-bio">Sophie is gespecialiseerd in moderne dameskapsels, kleuringen en luxe styling. Met haar creatieve aanpak weet zij iedere look perfect af te stemmen op de klant.</p>
-    <p class="profile-bio">Door haar jarenlange ervaring in moderne haartechnieken creëert Sophie elegante en natuurlijke resultaten die lang mooi blijven.</p>
-    <p class="profile-bio">Of het nu gaat om highlights, balayage of een complete make-over, Sophie zorgt altijd voor een ontspannen sfeer en professioneel eindresultaat.</p>
-    <div class="profile-tags">
-      <span class="profile-tag">Highlights</span>
-      <span class="profile-tag">Balayage</span>
-      <span class="profile-tag">Kleuren</span>
-      <span class="profile-tag">Knippen &amp; föhnen</span>
-      <span class="profile-tag">Styling</span>
-      <span class="profile-tag">Keratin behandeling</span>
+    <p class="hc-sub">Dames &amp; kleur specialist</p>
+    <div class="hc-line"></div>
+    <p class="hc-bio">Sophie is gespecialiseerd in moderne dameskapsels, kleuringen en luxe styling. Met haar creatieve aanpak weet zij iedere look perfect af te stemmen op de klant.</p>
+    <p class="hc-bio" style="animation-delay:.52s">Door haar jarenlange ervaring in moderne haartechnieken creëert Sophie elegante resultaten die lang mooi blijven.</p>
+    <div class="hc-tags">
+      <span class="htag">Highlights</span>
+      <span class="htag">Balayage</span>
+      <span class="htag">Kleuren</span>
+      <span class="htag">Knippen &amp; föhnen</span>
+      <span class="htag">Styling</span>
+      <span class="htag">Keratin</span>
     </div>
-    <div class="profile-cta">
-      <a href="index.html#afspraak" class="btn-book">Afspraak maken</a>
-      <a href="index.html#team" class="btn-ghost">Bekijk ons team</a>
+    <div class="hc-cta">
+      <a href="index.html#afspraak" class="btn-p">Afspraak maken</a>
+      <a href="index.html#team" class="btn-g">Bekijk ons team</a>
     </div>
   </div>
 </section>
- 
-<div class="stats-bar">
-  <div class="stat-item">
-    <strong>8+</strong>
-    <span>Jaar ervaring</span>
-  </div>
-  <div class="stat-item">
-    <strong>500+</strong>
-    <span>Tevreden klanten</span>
-  </div>
-  <div class="stat-item">
-    <strong>100%</strong>
-    <span>Persoonlijke aandacht</span>
-  </div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="sitem"><strong>8+</strong><span>Jaar ervaring</span></div>
+  <div class="sitem"><strong>500+</strong><span>Tevreden klanten</span></div>
+  <div class="sitem"><strong>100%</strong><span>Persoonlijke aandacht</span></div>
 </div>
- 
-<section class="specialties-section">
-  <p class="section-eyebrow reveal">Specialiteiten</p>
-  <div class="spec-grid">
-    <div class="spec-card reveal">
-      <span class="spec-icon">I.</span>
-      <h3>Kleur & highlights</h3>
-      <p>Van subtiele highlights tot volledige kleuringen — Sophie werkt met de nieuwste technieken voor een natuurlijk, stralend resultaat.</p>
+
+<!-- OVER & CV -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-body">
+      <div class="eyebrow reveal"><span>Over Sophie</span></div>
+      <h2 class="section-title reveal">Een passie voor <em>haar &amp; stijl.</em></h2>
+      <p class="reveal">Sophie groeide op met een liefde voor mode en esthetiek. Na haar opleiding aan de kappersvakschool in Breda werkte ze bij salons in Amsterdam en Antwerpen, voordat ze terugkeerde naar haar thuisstad om haar eigen stempel te drukken bij Kapsalon Breda.</p>
+      <p class="reveal">Ze is continu op zoek naar nieuwe technieken en trends, en volgt regelmatig masterclasses bij toonaangevende stylisten in Europa. Haar kracht zit in het echt luisteren naar de klant — en dat te vertalen naar een look die écht past.</p>
+      <p class="reveal">"Haar knippen is voor mij meer dan een vak. Het is een moment van verbinding. Ik wil dat iedere klant de deur uitstapt met een gevoel van zelfvertrouwen."</p>
     </div>
-    <div class="spec-card reveal reveal-delay-1">
-      <span class="spec-icon">II.</span>
-      <h3>Balayage</h3>
-      <p>Een handgeschilderde kleurtechniek die zorgt voor een zachte, zongebruinde look die naadloos overloopt in je eigen haarkleur.</p>
-    </div>
-    <div class="spec-card reveal reveal-delay-2">
-      <span class="spec-icon">III.</span>
-      <h3>Knippen & styling</h3>
-      <p>Van een klassieke knipbeurt tot een complete make-over. Sophie luistert naar jouw wensen en vertaalt die naar een look die bij jou past.</p>
+
+    <div>
+      <div class="eyebrow reveal"><span>Hobbies &amp; interesses</span></div>
+      <div class="hobbies-grid">
+        <div class="hobby-card reveal">
+          <span class="hobby-icon">🌿</span>
+          <h3>Plantkunde</h3>
+          <p>Thuis omringd door planten — Sophie heeft een bijzondere interesse in botanica en verzorgt een uitgebreide collectie.</p>
+        </div>
+        <div class="hobby-card reveal d1">
+          <span class="hobby-icon">📸</span>
+          <h3>Fotografie</h3>
+          <p>Ze legt met haar camera graag stijl en schoonheid vast. Mode- en portretfotografie zijn haar favoriete onderwerpen.</p>
+        </div>
+        <div class="hobby-card reveal d2">
+          <span class="hobby-icon">✈️</span>
+          <h3>Reizen</h3>
+          <p>Inspiratie opdoen door te reizen. Van Parijs tot Tokyo — Sophie haalt haar stijlinvloeden uit de hele wereld.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
- 
+
+<!-- CV TIJDLIJN -->
+<section class="cv-section">
+  <div class="cv-inner">
+    <div class="eyebrow reveal"><span>Loopbaan</span></div>
+    <h2 class="section-title reveal">Haar <em>carrière.</em></h2>
+    <div class="timeline" style="margin-top:48px">
+      <div class="titem reveal">
+        <div class="tyear">2015 — 2017</div>
+        <div class="ttitle">Opleiding Haarverzorging — ROC West-Brabant</div>
+        <div class="tdesc">Vierjarige opleiding afgerond met onderscheiding. Specialisatie in kleur- en snijdtechnieken.</div>
+      </div>
+      <div class="titem reveal d1">
+        <div class="tyear">2017 — 2019</div>
+        <div class="ttitle">Junior Styliste — Salon Elise, Amsterdam</div>
+        <div class="tdesc">Werkte in een drukke Amsterdamse salon, opgedaan ervaring met een breed en veeleisend klantenbestand.</div>
+      </div>
+      <div class="titem reveal d2">
+        <div class="tyear">2019 — 2020</div>
+        <div class="ttitle">Kleurspecialist — Studio Ava, Antwerpen</div>
+        <div class="tdesc">Verdieping in balayage, highlights en Belgische kleurbehandelingstechnieken. Intensieve masterclasses gevolgd.</div>
+      </div>
+      <div class="titem reveal d3">
+        <div class="tyear">2020 — heden</div>
+        <div class="ttitle">Senior Styliste — Kapsalon Breda</div>
+        <div class="tdesc">Terug in Breda, waar Sophie haar expertise inzet voor een vaste en groeiende klantenkring. Trots op haar team en resultaten.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALITEITEN -->
+<section class="spec-section">
+  <div class="spec-inner">
+    <div class="eyebrow reveal"><span>Specialiteiten</span></div>
+    <h2 class="section-title reveal">Waar Sophie <em>in uitblinkt.</em></h2>
+    <div class="spec-grid">
+      <div class="sc reveal">
+        <span class="sc-num">I.</span>
+        <h3>Kleur &amp; highlights</h3>
+        <p>Van subtiele highlights tot volledige kleuringen — Sophie werkt met de nieuwste technieken voor een natuurlijk, stralend resultaat dat past bij jouw huidskleur.</p>
+      </div>
+      <div class="sc reveal d1">
+        <span class="sc-num">II.</span>
+        <h3>Balayage</h3>
+        <p>Een handgeschilderde kleurtechniek die zorgt voor een zachte, zongebruinde look die naadloos overloopt in je eigen haarkleur. Warm en tijdloos.</p>
+      </div>
+      <div class="sc reveal d2">
+        <span class="sc-num">III.</span>
+        <h3>Knippen &amp; styling</h3>
+        <p>Van een klassieke knipbeurt tot een complete make-over. Sophie luistert naar jouw wensen en vertaalt die naar een look die bij jou past — nu en altijd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <h2>Kapsalon <span>Breda</span></h2>
-      <p>Service, vakmanschap en persoonlijke aandacht. Wij zorgen dat jij de deur uitstapt met een goed gevoel.</p>
+  <div class="footer-top">
+    <div>
+      <a class="logo" href="index.html" style="display:inline-block;margin-bottom:16px">Kapsalon <em>Breda</em></a>
+      <p class="fc" style="font-size:14px;font-weight:300;line-height:1.9;color:var(--stone);max-width:280px">Service, vakmanschap en persoonlijke aandacht. Wij zorgen dat jij de deur uitstapt met een goed gevoel.</p>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h3>Contact</h3>
-      <p>Breda, Nederland<br><a href="tel:0765201955">076-5201955</a><br><a href="mailto:info@kapsalon.nl">info@kapsalon.nl</a></p>
+      <a href="tel:0765201955">076-5201955</a>
+      <a href="mailto:info@kapsalon.nl">info@kapsalon.nl</a>
+      <p>Breda, Centrum</p>
     </div>
-    <div class="footer-col">
+    <div class="fc">
       <h3>Openingstijden</h3>
       <p>Maandag: gesloten<br>Di – Wo: 09:00 – 18:00<br>Donderdag: 09:00 – 21:00<br>Vrijdag: 09:00 – 18:00<br>Zaterdag: 09:00 – 17:00</p>
     </div>
@@ -214,18 +289,18 @@ footer { background: #0a0908; color: rgba(247,244,239,0.5); padding: 80px 60px 4
     <a href="index.html#afspraak" class="footer-cta">Afspraak maken</a>
   </div>
 </footer>
- 
+
 <script>
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => cur.classList.add('grow'));
-  el.addEventListener('mouseleave', () => cur.classList.remove('grow'));
+const cur=document.getElementById('cur');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
 });
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 </script>
 </body>
 </html>
