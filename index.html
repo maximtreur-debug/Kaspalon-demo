@@ -585,7 +585,10 @@ footer{background:#07060504;border-top:1px solid var(--line);padding:80px 64px 4
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+emailjs.init('uqgU5EFcv74CZg8bB');
+
 const cur=document.getElementById('cur');
 document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'});
 document.querySelectorAll('a,button,input,select').forEach(el=>{
@@ -607,14 +610,41 @@ function switchTab(btn,panel){
 
 function sendForm(e){
   e.preventDefault();
+  const btn=e.target.querySelector('.btn-submit');
+  const melding=document.getElementById('melding');
+
   const naam=document.getElementById('naam').value.trim();
+  const email=document.getElementById('email').value.trim();
   const kapper=document.getElementById('kapper').value;
   const dienst=document.getElementById('dienst').value;
   const datum=document.getElementById('datum').value;
   const tijd=document.getElementById('tijd').value;
   const d=new Date(datum+'T00:00:00').toLocaleDateString('nl-NL',{weekday:'long',day:'numeric',month:'long'});
-  document.getElementById('melding').textContent=`Bedankt ${naam}! Je afspraak bij ${kapper} (${dienst}) is aangevraagd voor ${d} om ${tijd}.`;
-  e.target.reset();
+
+  btn.textContent='Versturen...';
+  btn.disabled=true;
+  melding.textContent='';
+
+  emailjs.send('service_2gjvrq8','template_igscaf7',{
+    naam,
+    email,
+    kapper,
+    dienst,
+    datum: d,
+    tijd
+  }).then(()=>{
+    melding.style.color='var(--gold2)';
+    melding.textContent=`Bedankt ${naam}! Je afspraak bij ${kapper} (${dienst}) is aangevraagd voor ${d} om ${tijd}. Je ontvangt een bevestiging per e-mail.`;
+    e.target.reset();
+    btn.textContent='Verstuur aanvraag';
+    btn.disabled=false;
+  }).catch(err=>{
+    melding.style.color='#f4a4a4';
+    melding.textContent='Er ging iets mis. Probeer het opnieuw of bel ons op 076-5201955.';
+    console.error('EmailJS fout:',err);
+    btn.textContent='Verstuur aanvraag';
+    btn.disabled=false;
+  });
 }
 </script>
 
